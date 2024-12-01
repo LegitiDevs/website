@@ -48,6 +48,8 @@
     --outline: #1a1d30;
 
     color-scheme: light dark;
+
+    scroll-behavior: smooth;
 }
 
 body {
@@ -151,10 +153,17 @@ h1::after {
 .code-block {
     background-color: rgb(10, 10, 15);
     outline: solid var(--accent) 2px;
+    max-width: 500px;
+    overflow-x: scroll;
     padding-block: 5px;
     padding-inline: 20px;
     border-radius: 10px;
     font-family: 'Roboto Mono', Courier, monospace;
     font-size: 0.8em;
     white-space: pre-wrap;
+    text-wrap: nowrap;
 }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--tertiary-dark) }
+::-webkit-scrollbar-thumb { background: var(--main-light); border-radius: 100vmax; }

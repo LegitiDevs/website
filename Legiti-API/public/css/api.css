@@ -1,0 +1,11 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    background-color: light-dark(var(--main-light), var(--main-dark));
+    min-height: 100vmin;
+    align-items: center;
+
+    p {
+        max-width: 500px;
+    }
+}

@@ -22,6 +22,17 @@
     src: url(../assets/fonts/Poppins-BoldItalic.ttf);
 }
 
+@font-face {
+    font-family: "Roboto Mono";
+    src: url(../assets/fonts/RobotoMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    font-style: italic;
+    src: url(../assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf);
+}
+
 :root {
     --main-light: #D1DAE4;
     --secondary-light: #fff;
@@ -43,7 +54,6 @@ body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 100%;
     margin: 0;
     font-family: "Poppins";
     font-size: 1em;
@@ -82,7 +92,7 @@ img, svg, video, canvas, audio, iframe, embed, object {
     flex-direction: column;
     background-color: light-dark(var(--tertiary-light), var(--tertiary-dark));
     color: var(--text-main-dark);
-    height: 30vmin;
+    min-height: 30vmin;
     padding: 25px 25px 50px 25px;
 
     p {
@@ -108,4 +118,43 @@ img, svg, video, canvas, audio, iframe, embed, object {
         height: auto;
         width: 50px;
     }
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    top: 120%;
+    background-color: light-dark(var(--secondary-dark), var(--secondary-light));
+    height: 5px;
+    width: 120%;
+}
+
+.token {
+    &.punctuation { color: #f1d710; }
+    &.operator { color: #ffffff; }
+    &.string { color: #ce8455 }
+    &.string-property { color: #ce8455 }
+    &.comment { color: #659742; }
+    &.number { color: #a7ce9b; }
+    &.boolean { color: #569cd6; }
+}
+
+.code-block {
+    background-color: rgb(10, 10, 15);
+    outline: solid var(--accent) 2px;
+    padding-block: 5px;
+    padding-inline: 20px;
+    border-radius: 10px;
+    font-family: 'Roboto Mono', Courier, monospace;
+    font-size: 0.8em;
+    white-space: pre-wrap;
 }

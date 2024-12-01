@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Worlds</title>
     <link rel="stylesheet" href="../css/global_style.css">
+    <link rel="stylesheet" href="../css/api.css">
+    <script src="../assets/js/prism.js" defer></script>
 </head>
 <body>
     <div class="navbar">
@@ -19,7 +21,23 @@
         <a href="/browse">World Browser</a>
     </div>
 
-    <p>Api page</p>
+    <div class="main-container">
+        <h1>API Usage & Docs</h1>
+        <p>the docs docced the api after which the usaged also docced the api when the api finally decided to apided the doc and its children docs and the usage</p>
+        <code class="language-js code-block">
+{
+    "name": "Name of the world in String JSON text",
+    "creator": "Player Name",
+    "icon": "minecraft:item", // like minecraft:player_head.
+    "players": 0, // How many players are in the world currently.
+    "votes": 0, // World vote count.
+    "visits": 0, // World visit count
+    "date_created": 0, // Unix Timestamp.
+    "uuid": "UUID", // UUID of the world.
+    "has_resource_pack": false,
+}
+        </code>
+    </div>
     
     <div class="footer-container">
         <p>This is not official and is made by the community.</p>

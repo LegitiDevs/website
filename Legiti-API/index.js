@@ -2,9 +2,7 @@ import Fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import CONFIG from "./config.json" with { type: "json" };
 import path from "path";
-import { readdirSync, readFileSync } from "node:fs"
-import { Stream } from "node:stream";
-import { parse } from "node-html-parser"
+import { readdirSync } from "node:fs"
 
 const __dirname = import.meta.dirname;
 const PUBLIC_FOLDER = path.join(__dirname, "public");

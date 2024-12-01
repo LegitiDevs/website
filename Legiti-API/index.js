@@ -3,6 +3,7 @@ import fastifyStatic from "@fastify/static";
 import CONFIG from "./config.json" with { type: "json" };
 import path from "path";
 import { readdirSync } from "node:fs"
+import { utils } from "./utils/log.js";
 
 const __dirname = import.meta.dirname;
 const PUBLIC_FOLDER = path.join(__dirname, "public");
@@ -35,7 +36,9 @@ function routePages() {
 
 routePages()
 
+const timeBefore = performance.now()
 fastify.listen({ port: CONFIG.port }, function (err, address) {
+    utils.info(`Server running at ${address}, Took ${performance.now() - timeBefore}ms`)
     if (err) {
         fastify.log.error(err);
         process.exit(1);

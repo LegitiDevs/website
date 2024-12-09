@@ -33,6 +33,17 @@
     src: url(../assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf);
 }
 
+@font-face {
+    font-family: "Minecraft Seven";
+    src: url(../assets/fonts/minecraft-seven.ttf);
+}
+
+@font-face {
+    font-family: "Minecraft Seven";
+    font-weight: bold;
+    src: url(../assets/fonts/minecraft-seven-bold.ttf);
+}
+
 :root {
     --main-light: #dfe5ec;
     --secondary-light: #d2dae4;

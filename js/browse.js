@@ -2,6 +2,8 @@ const CONTAINER = document.getElementById("name_container")
 
 let worldData
 
+let iconCache = {}
+
 // const SPECIAL_CASES_getItemIcon_LOOKUP = {
 //     "gold_block": "Block_of_Gold",
 //     "quartz_block": "Block_of_Quartz",
@@ -10,6 +12,9 @@ let worldData
 //     "bamboo_block": "Block_of_Bamboo",
 // }
 async function getItemIcon(item_id) {
+    if (iconCache[item_id]) {
+        return iconCache[item_id]
+    }
     console.log(item_id)
     let final = item_id.replace(/^\w+:/, "").split("_");
     final = final
@@ -22,6 +27,7 @@ async function getItemIcon(item_id) {
     const pngResponse = await fetch(pngUrl);
 
     if (pngResponse.ok) {
+        iconCache[item_id] = pngResponse.url
         return pngResponse.url;
     }
 
@@ -29,6 +35,7 @@ async function getItemIcon(item_id) {
     const gifResponse = await fetch(gifUrl);
 
     if (gifResponse.ok) {
+        iconCache[item_id] = gifResponse.url
         return gifResponse.url;
     }
 
@@ -48,9 +55,13 @@ async function addWorld(world) {
     wrapper.style.display = "flex"
     wrapper.style.flexDirection = "row"
     wrapper.style.margin = "10px"
+    wrapper.style.height = "50px"
+    wrapper.style.alignItems = "center"
+    wrapper.style.justifyContent = "center"
 
     let worldName = document.createElement("minecraft-text");
     worldName.textContent = world.raw_name
+    worldName.style.marginRight = "10px"
 
     wrapper.appendChild(worldName)
 

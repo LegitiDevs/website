@@ -28,6 +28,7 @@
 	<a href="/">Home</a>
 	<a href="/api">API</a>
 	<a href="/browse">World Browser</a>
+	<a href="/stats">Statsᵃˡᵖʰᵃ</a>
 </div>
 
 {@render children()}

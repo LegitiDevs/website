@@ -27,9 +27,9 @@
     }
 
     async function fetchPage() {
-        console.log(`https://api.omrih.me/page/${pageIndex}?sort=${sort}?sortDirection=${sortDirection}`)
+        console.log(`https://api.legitimoose.net/page/${pageIndex}?sort=${sort}?sortDirection=${sortDirection}`)
         isLoading = true
-        const res = await fetch(`https://api.omrih.me/page/${pageIndex}?sort=${sort}?sortDirection=${sortDirection}`)
+        const res = await fetch(`https://api.legitimoose.net/page/${pageIndex}?sort=${sort}?sortDirection=${sortDirection}`)
         const newWorlds = await res.json()
         worlds = [...worlds, ...newWorlds]
         pageIndex++
@@ -46,7 +46,7 @@
         isLoading = true
         isSearching = true
         const sanitizedQuery = encodeURIComponent(query)
-        const res = await fetch(`https://api.omrih.me/search/${sanitizedQuery}`)
+        const res = await fetch(`https://api.legitimoose.net/search/${sanitizedQuery}`)
         const worldsMatched = await res.json()
         searchedWorlds = worldsMatched;
         isLoading = false

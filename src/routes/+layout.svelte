@@ -37,7 +37,7 @@
 	<p>Not affiliated with Mojang AB or Partners</p>
 	
 	<div class="links-container">
-		<a href="https://store.skyenet.co.in">API Website Hosted by SkyeNet</a>
+		<a href="https://store.skyenet.co.in">API Hosted by SkyeNet</a>
 		<a href="https://github.com/LegitiDevs/">
 			<img src="/svg/github-mark-white.svg" alt="Github Logo" />
 		</a>

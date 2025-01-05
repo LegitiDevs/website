@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-  	import '$lib/global_style.css';
+  	import '$lib/global_style.css'
 	import { page } from '$app/stores';
 
-	onMount(async () => {
-		await import('$lib/minecraft-text');
-	})
+  onMount(async () => {
+    await import('$lib/minecraft-text')
+  })
 
 	let { children } = $props();
 	const isError = $page.status >= 400;
@@ -37,6 +37,7 @@
 		<p>We have no affiliation with any real-world brands.</p>
 		<p>Not affiliated with Mojang AB or Partners</p>
 		<div class="links-container">
+			<a href="https://store.skyenet.co.in">API Hosted by SkyeNetwork</a>
 			<a href="https://github.com/LegitiDevs/">
 				<img src="/svg/github-mark-white.svg" alt="Github Logo" />
 			</a>
@@ -44,6 +45,7 @@
 				<img src="/svg/discord-mark-white.svg" alt="Discord Logo" />
 			</a>
 			<a href="https://store.legitimoose.com">store.legitimoose.com</a>
+		
 			<a href="https://youtube.com/legitimoose">
 				<img src="/img/youtube.png" alt="Legitimoose's Youtube" />
 			</a>

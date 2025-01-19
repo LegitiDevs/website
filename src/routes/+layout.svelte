@@ -27,14 +27,16 @@
 	<a href="/">Home</a>
 	<a href="/api">API</a>
 	<a href="/browse">World Browser</a>
-	<a href="/stats">Stats</a>
 	<a href="/status">Status</a>
+	<a href="/stats">Stats</a>
 </div>
 
 {@render children()}
 
 {#if !isError}
 	<div class="footer-container">
+		<a href="https://legitimoose-net-prod-testing.vercel.app/">To the dev version</a>
+		<p></p>
 		<p>This is not an official Moose project and is made by the community.</p>
 		<p>We have no affiliation with any real-world brands.</p>
 		<p>Not affiliated with Mojang AB or Partners</p>

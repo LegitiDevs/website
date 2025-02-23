@@ -1,5 +1,4 @@
 <script>
-    import { STATUS_CHECKING_CONFIG } from "$lib/config";
     import * as fs from "fs"
 	import { onMount } from "svelte";
 	import UptimeDisplay from "./UptimeDisplay.svelte";

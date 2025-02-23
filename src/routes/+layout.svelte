@@ -1,15 +1,25 @@
 <script>
-	import { onMount } from 'svelte';
-  	import '$lib/global_style.css'
 	import { page } from '$app/stores';
+	import { afterNavigate } from "$app/navigation";
+	import { lastPageURL, currentPageURL } from "$lib/stores.js";
+	import { onMount } from 'svelte';
+	import { SITE_CONFIG } from '$lib/config';
+	import Dropdown from '$lib/components/Dropdown.svelte';
+	import '$lib/global_style.css'
+	import { rehyphenateUUID } from '$lib/utils.js';
 
   	onMount(async () => {
-  	  await import('$lib/minecraft-text')
+  	  	await import('$lib/minecraft-text')
   	})
 
-	let { children } = $props();
+	let { children, data } = $props();
 	const isError = $page.status >= 400;
 
+	// Set the initial page URL
+	afterNavigate((nav) => {
+		lastPageURL.set($currentPageURL); // Store the previous page
+		currentPageURL.set(nav.to?.url || window.location.href); // Update current page
+	});
 </script>
 
 <svelte:head>
@@ -21,16 +31,37 @@
 </svelte:head>
 
 <div class="navbar">
-	<a href="/">
-		<img src="/img/legitimoose-api-mark.png" alt="Legitimoose API Mark" />
-	</a>
-	<a href="/">Home</a>
-	<a href="/api">API</a>
-	<a href="/browse">World Browser</a>
-	<a href="/stats">Stats</a>
-	<a href="/status">Status</a>
-	<a href="/team">Meet The Team</a>
-	<a href="/donate">Donate</a>
+	<div class="left">
+		<a href="/">
+			<img src="/img/legitimoose-api-mark.png" alt="Legitimoose API Mark" />
+		</a>
+		<a href="/">Home</a>
+		<a href="/api">API</a>
+		<a href="/browse">World Browser</a>
+		<a href="/stats">Stats</a>
+		<a href="/status">Status</a>
+		<a href="/team">Meet The Team</a>
+		<a href="/donate">Donate</a>
+	</div>
+	<div class="right">
+		{#if !data.profile_data}
+			<a href="/profile/login">Log in</a>
+		{:else}
+			<div class="profile-dropdown">
+				<Dropdown img={`https://mc-heads.net/head/${data.profile_data.id}/left`} options={[
+					{
+						label: "My Profile",
+						link: `/profile/${rehyphenateUUID(data.profile_data.id)}`
+					},
+					{
+						label: "Log out",
+						reload: true,
+						link: `/profile/logout`
+					}
+				]} />
+			</div>
+		{/if}
+	</div>
 </div>
 
 {@render children()}
@@ -64,20 +95,39 @@
 	.navbar {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
+		margin: 0;
 		background-color: light-dark(var(--secondary-light), var(--secondary-dark));
 		color: light-dark(var(--text-main-light), -var(-text-main-dark));
 
-		:first-child {
-			margin-left: 10px;
+		div {
+			display: flex;
+			align-items: center;
+			margin: 0;
+			margin-block: 5px;
+		}
+
+		.left {
+			display: flex;
+			flex-direction: row;
+			gap: 40px;
+			margin-left: 20px;
+		}
+
+		.right {
+			display: flex;
+			flex-grow: 1;
+			margin-right: 20px;
+			justify-content: end;
+
+			.profile-dropdown {
+				max-width: 50px;
+			}
 		}
 
 		a,
 		a:visited,
 		a:active {
 			color: light-dark(var(--text-main-light), var(--text-main-dark));
-			margin-block: 10px;
-			margin-left: 50px;
 			text-decoration: none;
 		}
 

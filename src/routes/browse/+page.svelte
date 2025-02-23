@@ -130,6 +130,7 @@
                     locked={world.locked}
                     player_count={world.player_count}
                     enforce_whitelist={world.enforce_whitelist}
+                    unlisted={world?.legitidevs?.unlisted}
                 />
             {/each}
         {:else}

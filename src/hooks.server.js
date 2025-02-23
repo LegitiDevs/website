@@ -5,7 +5,7 @@ import { MongoClient } from "mongodb";
 
 // type uptime = { status: 0 "good" | 1 "warning" | 2 "bad", time: unix timestamp }
 const MONGO_URI = process.env.MONGO_URI
-const DB = process.env.DB
+const DB = process.env.SITE_DB
 const mongoClient = new MongoClient(MONGO_URI)
 
 const status = mongoClient.db(DB).collection("status");

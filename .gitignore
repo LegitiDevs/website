@@ -29,5 +29,5 @@ vite.config.ts.timestamp-*
 
 .vscode
 
-# Jetbrains
+.fleet
 .idea

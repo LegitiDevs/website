@@ -52,9 +52,11 @@ export const GET = async ({ url, cookies }) => {
     // make the user confused on why they didnt log in cuz why not
     if (!tokenResponse.ok) return redirect(302, `/`)
     
-    const { sessionToken, refreshToken, profile_uuid } = await tokenResponse.json()
+    const { sessionToken, refreshToken, profile_uuid, refreshTokenExpiresAt } = await tokenResponse.json()
+    console.log(new Date(refreshTokenExpiresAt * 1000));
+
     cookies.set("authorization.sessionToken", sessionToken, { path: "/" })
-    cookies.set("authorization.refreshToken", refreshToken, { path: "/" })
+    cookies.set("authorization.refreshToken", refreshToken, { path: "/", expires: new Date(refreshTokenExpiresAt * 1000) })
     cookies.set("profile.uuid", profile_uuid, { path: "/" })
     
     return redirect(302, `/profile/${profile_uuid}`);

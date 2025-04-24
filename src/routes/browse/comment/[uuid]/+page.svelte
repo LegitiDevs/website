@@ -37,7 +37,7 @@
     <meta property="og:image" content="https://mc-heads.net/head/{profile_uuid}/left">
 </svelte:head>
 
-<div class="main-container" style="background-image: url('{backgroundImagePath}')">
+<div class="main-container" style="background-image: url('{backgroundImagePath}');">
     <div class="main-wrapper">
         {#if loaded}
             <div class="head-container" transition:fly={{y:20,duration:1000}}>
@@ -75,6 +75,7 @@
         align-items: center;
         justify-content: center;
 		background-color: light-dark(var(--main-light), var(--main-dark));
+        background-position: center;
         font-size: 2em;
         font-family: Crafted;
     }
@@ -85,7 +86,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
         background-image: linear-gradient(to top, black,rgba(0, 0, 0, 0));
     }
 

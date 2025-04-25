@@ -97,10 +97,10 @@
 		<a href="https://discord.gg/FQUmnbgV5S">
 			<img src="/svg/discord-mark-white.svg" alt="Discord Logo" />
 		</a>
-		<a href="https://store.legitimoose.com">
+		<a href="https://store.legitimoose.com">store.legitimoose.com</a>
+		<a href="/donate">
 			<img src="/svg/heart.svg" alt="Support Legitimoose!" />
 		</a>
-	
 		<a href="https://youtube.com/legitimoose">
 			<img src="/svg/youtube.svg" alt="Legitimoose's Youtube" />
 		</a>

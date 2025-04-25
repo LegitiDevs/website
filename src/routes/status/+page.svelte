@@ -1,5 +1,4 @@
 <script>
-    import * as fs from "fs"
 	import { onMount } from "svelte";
 	import UptimeDisplay from "./UptimeDisplay.svelte";
 	import { SITE_CONFIG } from "$lib/config";

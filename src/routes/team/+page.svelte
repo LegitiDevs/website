@@ -69,7 +69,6 @@
       </div>
     {/each}
   </div>
-  <Advertisement />
 </div>
 
 <style>

@@ -28,7 +28,6 @@
         <p class="status-message {statusMessageStatus}">{statusMessage}</p>
         <UptimeDisplay title="Scraper" description="Handles info gathering on the server, Discord2MC & MC2Discord chat, and the Discord Bot." uptime_data={scraperUptime}></UptimeDisplay>
     </div>
-    <Advertisement />
 </div>
 
 <style>

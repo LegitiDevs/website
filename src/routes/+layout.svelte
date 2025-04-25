@@ -97,13 +97,15 @@
 		<a href="https://discord.gg/FQUmnbgV5S">
 			<img src="/svg/discord-mark-white.svg" alt="Discord Logo" />
 		</a>
-		<a href="https://store.legitimoose.com">store.legitimoose.com</a>
+		<a href="https://store.legitimoose.com">
+			<img src="/svg/heart.svg" alt="Support Legitimoose!" />
+		</a>
 	
 		<a href="https://youtube.com/legitimoose">
-			<img src="/img/youtube.png" alt="Legitimoose's Youtube" />
+			<img src="/svg/youtube.svg" alt="Legitimoose's Youtube" />
 		</a>
 		<a href="https://bsky.app/profile/legitimoose.net">
-			<img src="/svg/bsky.svg" alt="LegitiDev BlueSky" />
+			<img src="/svg/bsky.svg" alt="LegitiDevs BlueSky" />
 		</a>
 	</div>
 </div>

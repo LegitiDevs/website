@@ -2,8 +2,8 @@ import { SITE_CONFIG } from '$lib/config';
 import { json, redirect } from '@sveltejs/kit';
 
 export const GET = async ({ url, cookies }) => {
-    if (["authorization.sessionToken", "authorization.refreshToken", "profile.uuid"].some(key => !cookies.get(key))) {
-        return redirect(302, "/profile/login")
+    if (!cookies.get("authorization.refreshToken")) {
+        return redirect(302, "/api/profile/login")
     }
 
     const refreshRes = await fetch(`${SITE_CONFIG.API_ROOT}profile/refresh`, {
@@ -12,11 +12,11 @@ export const GET = async ({ url, cookies }) => {
 		body: JSON.stringify({ profile_uuid: cookies.get("profile.uuid") }),
 	});
 
-	if (!refreshRes.ok) return redirect(302, "api/profile/login")
+	if (!refreshRes.ok) return redirect(302, "/api/profile/login")
 	
-	const { sessionToken, refreshToken } = await refreshRes.json()
+	const { sessionToken, refreshToken, refreshTokenExpiresAt } = await refreshRes.json()
 	cookies.set("authorization.sessionToken", sessionToken, { path: "/" })
-	cookies.set("authorization.refreshToken", refreshToken, { path: "/" })
+	cookies.set("authorization.refreshToken", refreshToken, { path: "/", expires: new Date(refreshTokenExpiresAt * 1000) })
 
 	return json({ success: true })
 }

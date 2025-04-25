@@ -1,4 +1,5 @@
 import { SITE_CONFIG } from '$lib/config.js';
+import { redirect } from '@sveltejs/kit';
 export const load = async ({ cookies, fetch }) => {
 	if (cookies.get("profile.uuid")) {
 		const checkSessionRes = await fetch(`${SITE_CONFIG.API_ROOT}profile/check-session`, {
@@ -8,8 +9,10 @@ export const load = async ({ cookies, fetch }) => {
 		});
 
 		if (!checkSessionRes.ok) {
-			const refresed = await (await fetch("/api/profile/refreshSession")).json()
-			if (!refreshed) {
+			const refreshed = await fetch("/api/profile/refreshSession")
+			if (refreshed.headers.get("location")) throw redirect(302, refreshed.headers.get("location"));
+			const { success } = await refreshed.json()
+			if (!success) {
 				cookies.set("authorization.sessionToken", "", { path: "/" });
 				cookies.set("authorization.refreshToken", "", { path: "/" });
 				cookies.set("profile.uuid", "", { path: "/" });
@@ -22,8 +25,10 @@ export const load = async ({ cookies, fetch }) => {
 
 		const isValid = await checkSessionRes.json();
 		if (!isValid.success) {
-			const refresed = await (await fetch("/api/profile/refreshSession")).json()
-			if (!refreshed) {
+			const refreshed = await fetch("/api/profile/refreshSession")
+			if (refreshed.headers.get("location")) throw redirect(302, refreshed.headers.get("location"));
+			const { success } = await refreshed.json()
+			if (!success) {
 				cookies.set("authorization.sessionToken", "", { path: "/" });
 				cookies.set("authorization.refreshToken", "", { path: "/" });
 				cookies.set("profile.uuid", "", { path: "/" });

@@ -11,9 +11,20 @@ const AUTH_REQ_URL =
 
 export const GET = async ({ url, cookies }) => {
 
-    // Ur already logged in dum dum.
-    if (cookies.get("profile.uuid")) {
-        return redirect(302, `/profile/${cookies.get("profile.uuid")}`);
+    if (cookies.get("authorization.sessionToken") && cookies.get("profile.uuid")) {
+        const checkSessionRes = await fetch(`${SITE_CONFIG.API_ROOT}profile/check-session`, {
+			method: "POST",
+			headers: { "Session-Token": cookies.get("authorization.sessionToken") },
+			body: JSON.stringify({ profile_uuid: cookies.get("profile.uuid") }),
+		});
+
+        if (checkSessionRes.ok) {
+            const isValid = await checkSessionRes.json()
+            // Ur already logged in dum dum.
+            if (isValid.success) {
+                return redirect(302, `/profile/${cookies.get("profile.uuid")}`);
+            }
+		}
     }
 
     const RAW_SEARCH_PARAMS = url.href.split("?")[1]
@@ -39,7 +50,7 @@ export const GET = async ({ url, cookies }) => {
 	})).json();
 
     if (mcAuthResponse.error) {
-        showAlert("Internal error occured.", "error", 5000)
+        showAlert("Internal error occured.", "error", 500)
         return redirect(302, `/`);
     }
 
@@ -53,11 +64,10 @@ export const GET = async ({ url, cookies }) => {
     if (!tokenResponse.ok) return redirect(302, `/`)
     
     const { sessionToken, refreshToken, profile_uuid, refreshTokenExpiresAt } = await tokenResponse.json()
-    console.log(new Date(refreshTokenExpiresAt * 1000));
 
     cookies.set("authorization.sessionToken", sessionToken, { path: "/" })
     cookies.set("authorization.refreshToken", refreshToken, { path: "/", expires: new Date(refreshTokenExpiresAt * 1000) })
-    cookies.set("profile.uuid", profile_uuid, { path: "/" })
+    cookies.set("profile.uuid", profile_uuid, { path: "/", expires: new Date(refreshTokenExpiresAt * 1000) })
     
     return redirect(302, `/profile/${profile_uuid}`);
 }

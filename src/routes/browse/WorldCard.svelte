@@ -1,8 +1,9 @@
 <script>
+	import { SITE_CONFIG } from "$lib/config";
 	import { getItemIcon, getOwnerName } from "$lib/utils.js";
 	import ItemIcon from "./ItemIcon.svelte";
 
-    let { world_uuid, icon, raw_name, owner_uuid, votes, visits, resource_pack_url, locked, player_count, enforce_whitelist } = $props();
+    let { world_uuid, icon, raw_name, owner_uuid, votes, visits, resource_pack_url, locked, player_count, enforce_whitelist, version } = $props();
     const isScreenSmall = window.innerWidth <= 680;
 </script>
 
@@ -32,6 +33,9 @@
             {/if}
             {#if enforce_whitelist}
                 <p class="info warning">Whitelisted!</p>
+            {/if}
+            {#if version !== SITE_CONFIG.LATEST_LEGITIMOOSE_VERSION}
+                <p class="info special">Outdated ({version})</p>
             {/if}
         </div>
     </div>

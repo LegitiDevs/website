@@ -143,7 +143,7 @@
                             locked={world.locked}
                             player_count={world.player_count}
                             enforce_whitelist={world.enforce_whitelist}
-                            unlisted={world?.legitidevs?.unlisted}
+                            version={world.version}
                         />
                     {/each}
                 {:else}
@@ -159,6 +159,7 @@
                             locked={world.locked}
                             player_count={world.player_count}
                             enforce_whitelist={world.enforce_whitelist}
+                            version={world.version}
                         />
                     {/each}
                 {/if}

@@ -163,6 +163,9 @@
                     {#if world.enforce_whitelist}
                         <p class="info warning">Whitelisted!</p>
                     {/if}
+                    {#if world.version !== SITE_CONFIG.LATEST_LEGITIMOOSE_VERSION}
+                        <p class="info special">Outdated ({world.version})</p>
+                    {/if}
                     {#if unlisted}
                         <p class="info special">Unlisted</p>
                     {/if}
@@ -439,11 +442,8 @@
         align-items: end;
         text-align: right;
         flex-grow: 1;
-
-        > .info:not(:last-child) {
-            margin: 0;
-            margin-bottom: 15px;
-        }
+        gap: 20px;
+        .info { margin: 0; }
     }
     
     .edit-button {

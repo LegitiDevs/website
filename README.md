@@ -1,3 +1,5 @@
+<!-- GitAds-Verify: 2G192BEVRQF5YPJJ1TWOFOBNEECICCNI -->
+
 # LegitiDevs Website
 The website for LegitiDevs
 

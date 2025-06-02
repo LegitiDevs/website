@@ -1,5 +1,5 @@
 <script>
-	import { SITE_CONFIG } from '$lib/config.js';
+	import SITE_CONFIG from "$lib/config.json";
 	import { onMount } from 'svelte';
 	import { rehyphenateUUID, showAlert } from '$lib/utils';
 	import WorldCard from '../../browse/WorldCard.svelte';

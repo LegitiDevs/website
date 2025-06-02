@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import UptimeDisplay from "./UptimeDisplay.svelte";
-	import { SITE_CONFIG } from "$lib/config";
+	import SITE_CONFIG from "$lib/config.json";
 	import Advertisement from "$lib/components/Advertisement.svelte";
 
     const { data } = $props();

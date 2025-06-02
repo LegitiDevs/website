@@ -1,5 +1,5 @@
 <script>
-	import { SITE_CONFIG } from "$lib/config";
+	import SITE_CONFIG from "$lib/config.json";
 	import { codeToHtml } from "shiki";
 
 	let inputValue = $state("");

@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import WorldCard from './WorldCard.svelte';
-	import { SITE_CONFIG } from '$lib/config';
+	import SITE_CONFIG from "$lib/config.json";
 	import Advertisement from '$lib/components/Advertisement.svelte';
 	import { get, writable } from 'svelte/store';
 

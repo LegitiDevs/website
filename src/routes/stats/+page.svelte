@@ -1,5 +1,5 @@
 <script>
-	import { SITE_CONFIG } from "$lib/config";
+	import SITE_CONFIG from "$lib/config.json";
     import { onMount } from "svelte";
 
     let top10Worlds = $state([]);

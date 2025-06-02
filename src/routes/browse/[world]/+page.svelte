@@ -1,6 +1,6 @@
 <script>
 	import Advertisement from "$lib/components/Advertisement.svelte";
-	import { SITE_CONFIG } from "$lib/config";
+	import SITE_CONFIG from "$lib/config.json";
 	import { lastPageURL } from "$lib/stores";
 	import { censorText, getItemIcon, getOwnerName, handleError, refreshSession, rehyphenateUUID, sanitizeText, showAlert } from "$lib/utils.js";
 	import ItemIcon from "../ItemIcon.svelte";

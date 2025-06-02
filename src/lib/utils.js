@@ -1,5 +1,5 @@
 import { redirect } from "@sveltejs/kit";
-import { SITE_CONFIG } from "./config";
+import SITE_CONFIG from "$lib/config.json" with { type: "json" }
 import { alerts, iconCache, usernameCache } from "./stores";
 import { invalidateAll } from "$app/navigation";
 import { get } from "svelte/store";

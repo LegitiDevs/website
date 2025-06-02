@@ -1,5 +1,5 @@
 import "dotenv/config"
-import { SITE_CONFIG } from "$lib/config";
+import SITE_CONFIG from "$lib/config.json" with { type: "json" };
 import { redirect } from "@sveltejs/kit";
 import { showAlert } from "$lib/utils.js";
 const AUTH_REQ_URL =

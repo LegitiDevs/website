@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '$lib/config.js';
+import SITE_CONFIG from "$lib/config.json" with { type: "json" }
 import { getOwnerName } from '$lib/utils.js';
 import { error } from '@sveltejs/kit'
 

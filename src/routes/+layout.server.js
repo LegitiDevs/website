@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '$lib/config.js';
+import SITE_CONFIG from '$lib/config.json' with { type: "json" }
 import { redirect } from '@sveltejs/kit';
 export const load = async ({ cookies, fetch }) => {
 	if (cookies.get("profile.uuid")) {

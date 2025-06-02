@@ -1,5 +1,5 @@
 <script>
-	import { SITE_CONFIG } from "$lib/config";
+	import SITE_CONFIG from "$lib/config.json";
 	import { getItemIcon, getOwnerName } from "$lib/utils.js";
 	import ItemIcon from "./ItemIcon.svelte";
 

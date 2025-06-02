@@ -3,7 +3,7 @@
 	import { afterNavigate } from "$app/navigation";
 	import { lastPageURL, currentPageURL, alerts } from "$lib/stores.js";
 	import { onMount } from 'svelte';
-	import { SITE_CONFIG } from '$lib/config';
+	import SITE_CONFIG from "$lib/config.json";
 	import Dropdown from '$lib/components/Dropdown.svelte';
 	import '$lib/global_style.css'
 	import { rehyphenateUUID } from '$lib/utils.js';

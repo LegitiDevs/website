@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '$lib/config';
+import SITE_CONFIG from "$lib/config.json" with { type: "json" }
 import { json, redirect } from '@sveltejs/kit';
 
 export const GET = async ({ url, cookies }) => {

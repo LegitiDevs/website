@@ -164,16 +164,18 @@
                     {/each}
                 {/if}
             </div>
-            <button bind:this={sentinel} class="sentinel" onclick={async () => { await fetchPage() }}>
-                {#if isLoading}
+            <div class="sentinel-container">
+                <button bind:this={sentinel} class="sentinel" onclick={async () => { await fetchPage() }}>
+                    {#if isLoading}
+                        <img src="/img/reefloading.gif" alt="Loading Icon" class="loading-icon">
+                    {:else}
+                        ...Load more...
+                    {/if}
+                </button>
+                {#if isSearching && isLoading}
                     <img src="/img/reefloading.gif" alt="Loading Icon" class="loading-icon">
-                {:else}
-                    ...Load more...
                 {/if}
-            </button>
-            {#if isSearching && isLoading}
-                <img src="/img/reefloading.gif" alt="Loading Icon" class="loading-icon">
-            {/if}
+            </div>
         </div>
     </div>
 </div>
@@ -295,6 +297,14 @@
         @media screen and (max-width: 680px) {
             grid-template-columns: 100%;
         }
+    }
+
+    .sentinel-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
     }
 
     .sentinel {

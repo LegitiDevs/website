@@ -55,6 +55,7 @@
         flex-direction: row;
         justify-content: space-between;
         margin-inline: 10px;
+        font-size: 0.85em;
         
         > .left > a {
             display: flex;
@@ -94,6 +95,7 @@
         margin-inline: 10px;
         margin-left: 75px;
         max-width: 75%;
+        font-size: 0.85em;
         .comment {
             margin: 0;
             margin-bottom: 20px;
@@ -110,7 +112,6 @@
         margin-bottom: 10px;
         
         > button {
-            padding-top: 2px !important; /* Since font is a bit broken, paddings are adjusted but this will get removed once fixed. */
             border: none;
             outline: none;
             font: inherit;

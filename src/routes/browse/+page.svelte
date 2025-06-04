@@ -186,7 +186,7 @@
 		background-color: light-dark(var(--main-light), var(--main-dark));
 		min-height: 100vmin;
         max-width: 100vw;
-        font-family: 'Crafted';
+        font-family: 'MinecraftDefault';
     }
 
     .main-wrapper {
@@ -229,9 +229,8 @@
         background-color: light-dark(#f1f0f5, #2b2b2f);
         box-shadow: 0px 5px light-dark(#9FA0AD, #111113);
         padding: 20px;
-        padding-top: 10px;
-        font-family: 'Crafted';
-        font-size: 2em;
+        font-family: 'MinecraftDefault';
+        font-size: 1.75em;
         gap: 10px;
 
         p { margin: 0; }
@@ -251,7 +250,6 @@
             background-color: light-dark(#d8d8dc, #555559);
             box-shadow: 0px 5px light-dark(#c1c0c4, #18181a);
             padding: 8px;
-            padding-top: 0px;
             font: inherit;
             font-size: 0.8em;
             border: none;
@@ -274,15 +272,15 @@
     
     .search-input {
         color: white;
-        font-family: 'Crafted', 'Poppins', Arial, Helvetica, sans-serif;
-        font-size: 2em;
+        font-family: 'MinecraftDefault', 'Poppins', Arial, Helvetica, sans-serif;
+        font-size: 1.75em;
         border: none;
         background-color: light-dark(#f1f0f5, #18181b);
         box-shadow: inset 0px 3px light-dark(#9FA0AD, #0b0b0c);
         outline: light-dark(#9FA0AD, #0b0b0c) 3px solid;
         width: 100%;
         padding-inline: 15px;
-        padding-bottom: 10px;
+        padding-block: 10px;
 
         &::placeholder {
             color: light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
@@ -308,7 +306,7 @@
     }
 
     .sentinel {
-        font-family: 'Crafted', 'Poppins', Arial, Helvetica, sans-serif;
+        font-family: 'MinecraftDefault', 'Poppins', Arial, Helvetica, sans-serif;
         text-decoration: none;
         font-size: 3em;
         text-align: center;

@@ -55,9 +55,8 @@
         flex-direction: column;
         background-color: light-dark(#f1f0f5, #2b2b2f);
         padding: 20px;
-        padding-top: 10px;
         box-shadow: 0px 10px light-dark(#9FA0AD, #111113);
-        font-family: "Crafted", "Poppins", Arial, Helvetica, sans-serif;
+        font-family: "MinecraftDefault", "Poppins", Arial, Helvetica, sans-serif;
         transition: all 0.1s ease;
         cursor: pointer;
         gap: 20px;
@@ -133,7 +132,7 @@
     }
 
     .name {
-        font-size: 2em;
+        font-size: 1.75em;
         paint-order: stroke fill;
         -webkit-text-stroke: black 5px;
     }
@@ -141,13 +140,13 @@
     .owner-name {
         color: light-dark(rgb(0, 0, 0, 0.5), rgb(255, 255, 255, 0.5));
         font-style: italic;
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
     .info {
-        padding: 7px;
-        padding-top: 0px;
-        font-size: 1.6em;
+        padding-inline: 6px;
+        padding-block: 4px;
+        font-size: 1.4em;
         color: black;
         background-color: #61a8f8;
         box-shadow: 0px 5px #4056e2;

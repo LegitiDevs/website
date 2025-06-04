@@ -77,7 +77,7 @@
 		background-color: light-dark(var(--main-light), var(--main-dark));
         background-position: center;
         font-size: 2em;
-        font-family: Crafted;
+        font-family: MinecraftDefault;
     }
 
     .main-wrapper {
@@ -125,7 +125,7 @@
             background: none;
             border: none;
             font: inherit;
-            font-size: 0.8em;
+            font-size: 0.6em;
             color: rgba(255, 255, 255, 0.5);
             transition: all 0.05s ease;
             &:hover {

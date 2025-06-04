@@ -34,14 +34,27 @@
 }
 
 @font-face {
-    font-family: "Crafted";
-    src: url(/fonts/Crafted-Regular.ttf);
+    font-family: "MinecraftDefault";
+    src: url(/fonts/MinecraftDefault-Regular.ttf);
 }
 
 @font-face {
-    font-family: "Crafted";
+    font-family: "MinecraftDefault";
     font-weight: bold;
-    src: url(/fonts/Crafted-Bold.ttf);
+    src: url(/fonts/MinecraftDefault-Bold.ttf);
+}
+
+@font-face {
+    font-family: "MinecraftDefault";
+    font-style: italic;
+    src: url(/fonts/MinecraftDefault-Italic.ttf);
+}
+
+@font-face {
+    font-family: "MinecraftDefault";
+    font-weight: bold;
+    font-style: italic;
+    src: url(/fonts/MinecraftDefault-BoldItalic.ttf);
 }
 
 body {

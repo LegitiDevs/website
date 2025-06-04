@@ -249,7 +249,7 @@
 		flex-direction: column;
 		background-color: light-dark(var(--main-light), var(--main-dark));
 		min-height: 100vmin;
-        font-family: "Crafted", "Poppins", Arial, Helvetica, sans-serif;
+        font-family: "MinecraftDefault", "Poppins", Arial, Helvetica, sans-serif;
     }
 
     .main-wrapper {
@@ -271,8 +271,7 @@
         margin-top: 20px;
         width: 90vw;
         background-color: light-dark(#f1f0f5, #2b2b2f);
-        padding-inline: 20px;
-        padding-block: 30px;
+        padding: 20px;
         align-items: center;
         box-shadow: 0px 10px light-dark(#9FA0AD, #111113);
         transition: 0.1s all ease;
@@ -339,7 +338,7 @@
             display: flex;
             width: 100%;
             margin-left: 30px;
-            font-size: 1.5em;
+            font-size: 1.4em;
             > p { margin: 0; }
         }
 
@@ -365,14 +364,15 @@
             outline: light-dark(#9FA0AD, #0b0b0c) 3px solid;
             font-family: inherit;
             font-size: 1em;
-            padding: 5px;
+            padding-top: 5px;
+            padding-bottom: 2px;
+            padding-inline: 5px;
             border: none;
             resize: none;
         }
         > button {
             color: black;
-            font-size: 1.2em;
-            padding-top: 0 !important; /* Since font is a bit broken, paddings are adjusted but this will get removed once fixed. */
+            font-size: 1em;
         }
     }
 
@@ -393,11 +393,11 @@
     .button {
         font-family: inherit;
         text-decoration: none;
-        font-size: 1.5em;
+        font-size: 1.4em;
         text-align: center;
         background-color: var(--accent);
         color: var(--text-main-dark);
-        padding-bottom: 8px;
+        padding-block: 5px;
         padding-inline: 15px;
         border: 3px solid var(--outline);
         border-radius: 100px;
@@ -447,7 +447,6 @@
     }
     
     .edit-button {
-        padding-top: 5px !important; /* Since font is a bit broken, paddings are adjusted but this will get removed once fixed. */
         border: none;
         outline: none;
         font: inherit;
@@ -486,7 +485,7 @@
         padding: 20px;
         background-color: light-dark(#f1f0f5, #2b2b2f);
         box-shadow: 0px 5px light-dark(#9FA0AD, #111113);
-        font-size: 1.5em;
+        font-size: 1.3em;
         color: light-dark(rgb(0, 0, 0, 0.5), rgb(255, 255, 255, 0.5));
 
         > p {
@@ -510,7 +509,7 @@
     }
 
     .title {
-        font-size: 4em;
+        font-size: 3.5em;
         margin: 0;
         paint-order: stroke fill;
         -webkit-text-stroke: black 10px;
@@ -518,7 +517,7 @@
 
     .description {
         margin: 0;
-        font-size: 1.75em;
+        font-size: 1.5em;
         max-width: 600px;
         paint-order: stroke fill;
         -webkit-text-stroke: black 5px;
@@ -528,7 +527,7 @@
         color: light-dark(rgb(0, 0, 0, 0.5), rgb(255, 255, 255, 0.5));
         font-style: italic;
         margin: 0;
-        font-size: 1.5em;
+        font-size: 1.4em;
 
         > a {
             font-weight: bold;
@@ -552,9 +551,9 @@
     }
 
     .info {
-        padding: 7px;
-        padding-top: 0px;
-        font-size: 1.6em;
+        padding-inline: 6px;
+        padding-block: 4px;
+        font-size: 1.4em;
         color: black;
         background-color: #61a8f8;
         box-shadow: 0px 5px #4056e2;

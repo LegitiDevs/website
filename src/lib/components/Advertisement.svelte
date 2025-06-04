@@ -77,7 +77,7 @@
             margin-bottom: 10px;
             > .substitute-ad {
                 text-align: left;
-                font-size: 1.5em;
+                font-size: 1.3em;
                 color: light-dark(var(--text-main-light), var(--text-main-dark));
                 text-decoration: none;
 

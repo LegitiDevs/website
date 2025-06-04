@@ -81,7 +81,7 @@
     padding-inline: 20px;
     padding-top: 5px;
     font-size: 3em;
-    font-family: 'Crafted';
+    font-family: 'MinecraftDefault';
     font-weight: bold;
     text-decoration: none;
     color: white;

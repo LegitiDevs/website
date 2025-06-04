@@ -31,7 +31,7 @@ class MinecraftText extends HTMLElement {
       underlined: false,
       strikethrough: false,
       obfuscated: false,
-      font: "Crafted",
+      font: "MinecraftDefault",
     };
     this.lastStyle = { ...this.defaultStyle };
     this.attachShadow({ mode: "open" });

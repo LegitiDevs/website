@@ -1,5 +1,6 @@
 <script>
 	import SITE_CONFIG from "$lib/config.json";
+    import { PUBLIC_API_ROOT } from '$env/static/public'
 	import { onMount } from 'svelte';
 	import { rehyphenateUUID, showAlert } from '$lib/utils';
 	import WorldCard from '../../browse/WorldCard.svelte';
@@ -10,7 +11,7 @@
     let worlds = $state([])
 
     onMount(async () => {
-        const res = await fetch(`${SITE_CONFIG.API_ROOT}owner/${data.profileOwnerUUID}`, {
+        const res = await fetch(`${PUBLIC_API_ROOT}owner/${data.profileOwnerUUID}`, {
             method: 'POST',
             headers: {
                 "Session-Token": data.cookies?.authorization?.sessionToken ?? ""

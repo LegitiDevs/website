@@ -1,8 +1,9 @@
 import SITE_CONFIG from '$lib/config.json' with { type: "json" }
+import { PUBLIC_API_ROOT } from '$env/static/public'
 import { redirect } from '@sveltejs/kit';
 export const load = async ({ cookies, fetch }) => {
 	if (cookies.get("profile.uuid")) {
-		const checkSessionRes = await fetch(`${SITE_CONFIG.API_ROOT}profile/check-session`, {
+		const checkSessionRes = await fetch(`${PUBLIC_API_ROOT}profile/check-session`, {
 			method: "POST",
 			headers: { "Session-Token": cookies.get("authorization.sessionToken") },
 			body: JSON.stringify({ profile_uuid: cookies.get("profile.uuid") }),

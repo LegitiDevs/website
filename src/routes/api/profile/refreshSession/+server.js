@@ -1,4 +1,5 @@
 import SITE_CONFIG from "$lib/config.json" with { type: "json" }
+import { PUBLIC_API_ROOT } from '$env/static/public'
 import { json, redirect } from '@sveltejs/kit';
 
 export const GET = async ({ url, cookies }) => {
@@ -6,7 +7,7 @@ export const GET = async ({ url, cookies }) => {
         return redirect(302, "/api/profile/login")
     }
 
-    const refreshRes = await fetch(`${SITE_CONFIG.API_ROOT}profile/refresh`, {
+    const refreshRes = await fetch(`${PUBLIC_API_ROOT}profile/refresh`, {
 		method: "POST",
 		headers: { "Refresh-Token": cookies.get("authorization.refreshToken") },
 		body: JSON.stringify({ profile_uuid: cookies.get("profile.uuid") }),

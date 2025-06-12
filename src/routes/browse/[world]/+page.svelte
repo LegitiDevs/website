@@ -1,6 +1,7 @@
 <script>
 	import Advertisement from "$lib/components/Advertisement.svelte";
 	import SITE_CONFIG from "$lib/config.json";
+    import { PUBLIC_API_ROOT } from '$env/static/public'
 	import { lastPageURL } from "$lib/stores";
 	import { censorText, getItemIcon, getOwnerName, handleError, refreshSession, rehyphenateUUID, sanitizeText, showAlert } from "$lib/utils.js";
 	import ItemIcon from "../ItemIcon.svelte";
@@ -43,7 +44,7 @@
         description: async () => {
             edits.description.loading = true
 
-            const res = await fetch(`${SITE_CONFIG.API_ROOT}world/edit/description`, {
+            const res = await fetch(`${PUBLIC_API_ROOT}world/edit/description`, {
                 method: 'POST',
                 headers: { "Session-Token": data.cookies.authorization.sessionToken },
                 body: JSON.stringify({ world_uuid: world.world_uuid, content: edits.description.content })
@@ -62,7 +63,7 @@
         unlist: async () => {
             edits.unlisted.loading = true
 
-            const res = await fetch(`${SITE_CONFIG.API_ROOT}world/edit/unlist`, {
+            const res = await fetch(`${PUBLIC_API_ROOT}world/edit/unlist`, {
                 method: 'POST',
                 headers: { "Session-Token": data.cookies.authorization.sessionToken },
                 body: JSON.stringify({ world_uuid: world.world_uuid })
@@ -80,7 +81,7 @@
 
             const content = censorText(sanitizeText(edits.comment.content))
 
-            const res = await fetch(`${SITE_CONFIG.API_ROOT}world/comment`, {
+            const res = await fetch(`${PUBLIC_API_ROOT}world/comment`, {
                 method: 'POST',
                 headers: { "Session-Token": data.cookies.authorization.sessionToken },
                 body: JSON.stringify({ world_uuid: world.world_uuid, profile_uuid: data.cookies.profile.uuid, content: content })
@@ -98,7 +99,7 @@
         },
         deleteComment: async (uuid, loading) => {
             loading = true
-            const res = await fetch(`${SITE_CONFIG.API_ROOT}world/comment/delete`, {
+            const res = await fetch(`${PUBLIC_API_ROOT}world/comment/delete`, {
                 method: 'POST',
                 headers: { "Session-Token": data.cookies.authorization.sessionToken },
                 body: JSON.stringify({ uuid: uuid })

@@ -1,5 +1,6 @@
 <script>
 	import SITE_CONFIG from "$lib/config.json";
+    import { PUBLIC_API_ROOT } from '$env/static/public'
     import { onMount } from "svelte";
 
     let top10Worlds = $state([]);
@@ -7,7 +8,7 @@
 
 
     async function findbestworld() {
-        const res = await fetch(`${SITE_CONFIG.API_ROOT}top/1`)
+        const res = await fetch(`${PUBLIC_API_ROOT}top/1`)
 
         if (res.status >= 400) throw new Error("fetch failed")
 
@@ -16,7 +17,7 @@
     }
     
     async function fetchTop10() {
-      const res = await fetch(`${SITE_CONFIG.API_ROOT}top/10`);
+      const res = await fetch(`${PUBLIC_API_ROOT}top/10`);
       
       if (res.status >= 400) throw new Error("fetch failed")
       

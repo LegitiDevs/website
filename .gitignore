@@ -1,8 +1,5 @@
 node_modules
 
-# config files
-src/lib/config.json
-
 # Output
 .output
 .vercel

@@ -1,5 +1,6 @@
 <script>
 	import SITE_CONFIG from "$lib/config.json";
+	import { PUBLIC_API_ROOT } from '$env/static/public'
 	import { codeToHtml } from "shiki";
 
 	let inputValue = $state("");
@@ -8,7 +9,7 @@
 
 	async function fetchData() {
 		try {
-			const response = await fetch(`${SITE_CONFIG.API_ROOT}${inputValue}`);
+			const response = await fetch(`${PUBLIC_API_ROOT}${inputValue}`);
 			const json = await response.json();
 			fetching = true;
 			result = await codeToHtml(JSON.stringify(json, null, 2), {
@@ -17,7 +18,7 @@
 			});
 			fetching = false;
 		} catch (err) {
-			result = `There was an error while trying to call '${SITE_CONFIG.API_ROOT}${inputValue}':\\n  ${err}`;
+			result = `There was an error while trying to call '${PUBLIC_API_ROOT}${inputValue}':\\n  ${err}`;
 		}
 	}
 </script>
@@ -120,7 +121,7 @@
 
 		<div class="text-block">
 			<p>
-				You can use <code>{SITE_CONFIG.API_ROOT}</code> to call the API
+				You can use <code>{PUBLIC_API_ROOT}</code> to call the API
 			</p>
 		</div>
 

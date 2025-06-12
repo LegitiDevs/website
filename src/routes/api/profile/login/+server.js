@@ -1,18 +1,20 @@
-import "dotenv/config"
 import SITE_CONFIG from "$lib/config.json" with { type: "json" };
 import { redirect } from "@sveltejs/kit";
 import { showAlert } from "$lib/utils.js";
+import { PUBLIC_SITE_ROOT, PUBLIC_MCAUTH_CLIENT_ID, PUBLIC_API_ROOT } from "$env/static/public";
+import { MCAUTH_CLIENT_SECRET } from "$env/static/private";
+const REDIRECT_URI = `${PUBLIC_SITE_ROOT}api/profile/login`
 const AUTH_REQ_URL =
 	`https://mc-auth.com/oAuth2/authorize` +
-	`?client_id=${SITE_CONFIG.MCAUTH.CLIENT_ID}` +
-	`&redirect_uri=${encodeURIComponent(SITE_CONFIG.MCAUTH.REDIRECT_URI)}` +
+	`?client_id=${PUBLIC_MCAUTH_CLIENT_ID}` +
+	`&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
 	`&scope=profile` +
 	`&response_type=code`;
 
 export const GET = async ({ url, cookies }) => {
 
     if (cookies.get("authorization.sessionToken") && cookies.get("profile.uuid")) {
-        const checkSessionRes = await fetch(`${SITE_CONFIG.API_ROOT}profile/check-session`, {
+        const checkSessionRes = await fetch(`${PUBLIC_API_ROOT}profile/check-session`, {
 			method: "POST",
 			headers: { "Session-Token": cookies.get("authorization.sessionToken") },
 			body: JSON.stringify({ profile_uuid: cookies.get("profile.uuid") }),
@@ -35,10 +37,10 @@ export const GET = async ({ url, cookies }) => {
     
     // Client has redirected. We got the code.
     const mcAuthPostRequestBody = {
-        client_id: SITE_CONFIG.MCAUTH.CLIENT_ID,
-        client_secret: process.env.MCAUTH_CLIENT_SECRET,
+        client_id: PUBLIC_MCAUTH_CLIENT_ID,
+        client_secret: MCAUTH_CLIENT_SECRET,
         code: SEARCH_PARAMS.get("code"),
-        redirect_uri: SITE_CONFIG.MCAUTH.REDIRECT_URI,
+        redirect_uri: REDIRECT_URI,
         grant_type: "authorization_code"
     }
 
@@ -51,11 +53,11 @@ export const GET = async ({ url, cookies }) => {
 
     if (mcAuthResponse.error) {
         showAlert("Internal error occured.", "error", 500)
-        return redirect(302, `/`);
+       return redirect(302, `/`);
     }
 
     // Give the access token to the server and get the session and refresh tokens.
-    const tokenResponse = await fetch(`${SITE_CONFIG.API_ROOT}profile/login`, {
+    const tokenResponse = await fetch(`${PUBLIC_API_ROOT}profile/login`, {
         method: "POST",
         body: JSON.stringify({ access_token: mcAuthResponse.access_token })
     });

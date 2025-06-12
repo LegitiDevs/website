@@ -3,6 +3,7 @@
 	import WorldCard from './WorldCard.svelte';
 	import SITE_CONFIG from "$lib/config.json";
 	import Advertisement from '$lib/components/Advertisement.svelte';
+    import { PUBLIC_API_ROOT } from '$env/static/public'
 	import { get, writable } from 'svelte/store';
 
     // These stores all the worlds we fetched
@@ -31,7 +32,7 @@
 
     async function fetchPage() {
         isLoading = true
-        const res = await fetch(`${SITE_CONFIG.API_ROOT}page/${pageIndex}?sort=${sort}&sortDirection=${sortDirection}`)
+        const res = await fetch(`${PUBLIC_API_ROOT}page/${pageIndex}?sort=${sort}&sortDirection=${sortDirection}`)
         const newWorlds = await res.json()
         worlds = [...worlds, ...newWorlds]
         pageIndex++
@@ -48,7 +49,7 @@
         isLoading = true
         isSearching = true
         const sanitizedQuery = encodeURIComponent(query)
-        const res = await fetch(`${SITE_CONFIG.API_ROOT}search/${sanitizedQuery}`)
+        const res = await fetch(`${PUBLIC_API_ROOT}search/${sanitizedQuery}`)
         const worldsMatched = await res.json()
         searchedWorlds = worldsMatched;
         isLoading = false

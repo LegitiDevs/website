@@ -16,11 +16,13 @@ export const getItemIcon = (item_id) => {
 
 export const getOwnerName = async (uuid) => {
     if (get(usernameCache)[uuid]) return get(usernameCache)[uuid]
-    const res = await fetch(`https://api.ashcon.app/mojang/v2/user/${uuid}`);
-    const profile = await res.json()
+    const res = await fetch(`/api/profile/get_owner_name/${uuid}`);
+    const profile = await res.json();
 
-    usernameCache.set({...get(usernameCache), [uuid]: profile.username})
-    return profile.username
+    if (!res.ok) throw new Error(profile)
+
+    usernameCache.set({...get(usernameCache), [uuid]: profile.name})
+    return profile.name
 }
 
 export const rehyphenateUUID = (uuid) => {
@@ -41,6 +43,11 @@ export const refreshSession = async (warn) => {
 export const sanitizeText = (text) => {
     const filter = /[\x00-\x1F\x7F\u200B\u200C\u200D\u2060\u202A-\u202E\uFEFF]/g
     return text.replaceAll(filter, "")
+}
+
+
+export function isUUID(value) {
+	return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 }
 
 export const handleError = async (status, badRequestMessage = "An error occured.") => {

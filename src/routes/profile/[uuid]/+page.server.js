@@ -1,13 +1,21 @@
-import { getOwnerName } from '$lib/utils.js'
-import { error } from '@sveltejs/kit';
+import { isUUID } from '$lib/utils.js'
+import { error, redirect } from '@sveltejs/kit';
 
 export const load = async ({ params }) => {
-    if (params.uuid.length <= 16) return error(404, { message: "Player does not exist." })
-    const ownerName = await getOwnerName(params.uuid);
-    if (!ownerName) return error(404, { message: "Player does not exist." })
+    const labyRes = await fetch(`https://laby.net/api/v3/user/${params.uuid}/profile`)
+    if (!labyRes.ok || labyRes.status >= 400) {
+        throw error(404, { message: "Player does not exist." })
+    }
+
+    const { uuid, name } = await labyRes.json();
+
+    if (isUUID(params.uuid)) {
+        throw redirect(301, `/profile/${name}`)
+	}
+
     return {
-        page: { title: ownerName },
-        profileOwnerUUID: params.uuid,
-        profileOwnerName: ownerName
+        page: { title: name },
+        profileOwnerUUID: uuid,
+        profileOwnerName: name
     }
 }

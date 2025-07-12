@@ -18,6 +18,7 @@
     <div class="button-container">
         <a href="/browse">World Browser -&gt;</a>
         <a href="/api">Usage & Docs -&gt;</a>
+        <a href="https://legitimoose.miraheze.org">Legitimoose Wiki -&gt;</a>
         <a href="/donate">Donate -&gt;</a>
     </div>
 </div>

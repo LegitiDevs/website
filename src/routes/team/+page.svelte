@@ -28,7 +28,7 @@
       name: 'Hazel',
       discord: '@xendyex',
       pronouns: '(she/her)',
-      quote: "transed the gender too much i'm a female camera now (see pfp) (im at the bottom)"
+      quote: "hazel."
     },
     {
       pfp: '/img/pfps/anjo.jpg',

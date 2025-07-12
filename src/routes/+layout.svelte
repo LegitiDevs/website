@@ -50,6 +50,7 @@
 			<a href="/">Home</a>
 			<a href="/api">API</a>
 			<a href="/browse">World Browser</a>
+			<a href="https://legitimoose.miraheze.org">Legitimoose Wiki</a>
 			<a href="/stats">Stats</a>
 			<a href="/status">Status</a>
 			<a href="/team">Meet The Team</a>

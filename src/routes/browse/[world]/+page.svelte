@@ -158,6 +158,8 @@
                 <div class="status-container">
                     {#if !world.locked}
                         <p class="info hidden">Offline</p>
+                    {:else if world.player_count == 1}
+                        <p class="info on">{world.player_count} player online</p>
                     {:else}
                         <p class="info on">{world.player_count} players online</p>
                     {/if}

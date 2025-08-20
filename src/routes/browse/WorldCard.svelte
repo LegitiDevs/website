@@ -28,6 +28,8 @@
         <div class="status-container">
             {#if !locked}
                 <p class="info hidden">Offline</p>
+	    {:else if player_count == 1}
+                <p class="info on">{player_count} player online</p>
             {:else}
                 <p class="info on">{player_count} players online</p>
             {/if}

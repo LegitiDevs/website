@@ -6,25 +6,16 @@
   <div class="body-container">
     <div class="left">
       <div class="content-container">
-        <p>This site runs on a VPS supplied by SkyeNet paid for by donations and advertisements.</p>
+        <p>All of our projects (including this website) cost money to run & invest time in. You can help make it possible for us to host more things (maybe even outside Legitimoose)</p>
         <div class="line"></div>
         <p>Your <b>donations help us keep our API, website, and other services running smooth</b> without crashes, or downtime.</p>
         <div class="line"></div>
         <p>If you can donate, please do. Every contribution counts, whatever the size.</p>
         <div class="line"></div>
-        <p class="secondary-stuff">Also, you might be able to get a rank on Skye Network!</p>
-        <div class="line"></div>
-        <p>Please use this template when donating:</p>
-        <blockquote>
-        [Your Message]<br>
-        <br>
-        Legitidevs<br>
-        [Your Discord Username]<br>
-        </blockquote>
       </div>
     </div>
     <div class="right">
-      <a href="https://paypal.me/skyenetworkmc" target="_blank" class="donate-button">
+      <a href="https://donate.stripe.com/cNi6oI60xgQScmdaf60Ny00" target="_blank" class="donate-button">
         Donate here!
       </a>
     </div>
@@ -46,7 +37,7 @@
 
   .title-container {
     display: flex;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to bottom, rgb(43, 43, 43) 80%, rgba(0, 0, 0, 0));
     width: 100%;
     height: 200px;
     align-items: center;

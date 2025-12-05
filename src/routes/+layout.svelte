@@ -1,6 +1,8 @@
 <script>
 	import { page } from '$app/stores';
-	import { afterNavigate } from "$app/navigation";
+	import { afterNavigate, beforeNavigate } from "$app/navigation";
+	import { browser } from '$app/environment';
+	import posthog from 'posthog-js';
 	import { lastPageURL, currentPageURL, alerts } from "$lib/stores.js";
 	import { onMount } from 'svelte';
 	import SITE_CONFIG from "$lib/config.json";
@@ -9,9 +11,9 @@
 	import { rehyphenateUUID } from '$lib/utils.js';
 	import { fly } from 'svelte/transition';
 
-  	onMount(async () => {
-  	  	await import('$lib/minecraft-text')
-  	})
+	onMount(async () => {
+		await import('$lib/minecraft-text')
+	})
 
 	let { children, data } = $props();
 	const isError = $page.status >= 400;
@@ -20,6 +22,28 @@
 	afterNavigate((nav) => {
 		lastPageURL.set($currentPageURL); // Store the previous page
 		currentPageURL.set(nav.to?.url || window.location.href); // Update current page
+	});
+
+	if (browser) {
+		beforeNavigate(() => posthog.capture('$pageleave'));
+		afterNavigate(() => posthog.capture('$pageview'));
+	}
+
+	function trackPageClick(pageName) {
+		posthog.capture('page click', {
+			page: pageName
+		});
+	}
+
+	function trackHomePageEvent() {
+		posthog.capture('home page event', {
+			page: 'home',
+			timestamp: new Date().toISOString()
+		});
+	}
+
+	onMount(() => {
+		trackHomePageEvent();
 	});
 </script>
 
@@ -47,14 +71,14 @@
 			<a href="/">
 				<img src="/img/legitimoose-api-mark.png" alt="Legitimoose API Mark" />
 			</a>
-			<a href="/">Home</a>
-			<a href="/api">API</a>
-			<a href="/browse">World Browser</a>
-			<a href="https://legitimoose.miraheze.org">Legitimoose Wiki</a>
-			<a href="/stats">Stats</a>
-			<a href="/status">Status</a>
-			<a href="/team">Meet The Team</a>
-			<a href="/donate">Donate</a>
+			<a href="/" onclick={() => trackPageClick('home')}>Home</a>
+			<a href="/api" onclick={() => trackPageClick('api')}>API</a>
+			<a href="/browse" onclick={() => trackPageClick('browse')}>World Browser</a>
+			<a href="https://legitimoose.wiki" onclick={() => trackPageClick('wiki')}>Legitimoose Wiki</a>
+			<a href="/stats" onclick={() => trackPageClick('stats')}>Stats</a>
+			<a href="/status" onclick={() => trackPageClick('status')}>Status</a>
+			<a href="/team" onclick={() => trackPageClick('team')}>Meet The Team</a>
+			<a href="https://donate.legiti.dev" onclick={() => trackPageClick('donate')}>Donate</a>
 		</div>
 		<div class="right">
 			{#if !data.cookies.profile}
@@ -82,7 +106,7 @@
 
 <div class="alerts-container">
 	{#each $alerts as alert}
-		<p class={["alert", alert.level]} transition:fly={{y:-10}}>{alert.message}</p>
+		<p class={['alert', alert.level]} transition:fly={{y:-10}}>{alert.message}</p>
 	{/each}
 </div>
 

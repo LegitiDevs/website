@@ -41,15 +41,8 @@
       pfp: '/img/pfps/nobleskye.png',
       name: 'NobleSkye',
       discord: '@prettyskye',
-      pronouns: '(She/her)',
-      quote: '*UwU... dont tell space.. >:3* - I also like host this...'
-    },
-    {
-      pfp: '/img/pfps/spaceinvadder.png',
-      name: 'Space',
-      discord: '@spaceinvadeer ',
-      pronouns: '(He/Him)',
-      quote: '*u followed by w followed by u*'
+      pronouns: '(She/Her)',
+      quote: "Mreow~ You should donate to this, So we can keep it running <3"
     },
 
   ];

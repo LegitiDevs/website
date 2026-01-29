@@ -16,11 +16,11 @@ export const getItemIcon = (item_id) => {
 
 export const getOwnerName = async (uuid) => {
     if (get(usernameCache)[uuid]) return get(usernameCache)[uuid]
-    const res = await fetch(`https://api.ashcon.app/mojang/v2/user/${uuid}`);
+    const res = await fetch(`https://playerdb.co/api/player/minecraft/${uuid}`);
     const profile = await res.json()
 
-    usernameCache.set({...get(usernameCache), [uuid]: profile.username})
-    return profile.username
+    usernameCache.set({...get(usernameCache), [uuid]: profile.data.player.username})
+    return profile.data.player.username
 }
 
 export const rehyphenateUUID = (uuid) => {

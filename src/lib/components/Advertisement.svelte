@@ -33,21 +33,18 @@
 <div class="ad">
     <p class="title">Advertisement</p>
     {#if loadedStatus === null || loadedStatus === "filled"}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2384425323311779"
-             crossorigin="anonymous"></script>
-        <!-- uwu-ad-uwu -->
-        <ins class="adsbygoogle"
-            use:observeAdStatusChange
-            style="display:block"
-            data-ad-client="ca-pub-2384425323311779"
-            data-ad-slot="6967461504"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-            out:fade={{duration:100}}
-            ></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2384425323311779"
+     crossorigin="anonymous"></script>
+<!-- Square -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2384425323311779"
+     data-ad-slot="9430363229"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     {:else}
         <div class="substitute-ad-container" in:fade>
             <a class="substitute-ad" href="/donate">Donating helps us run LegitiDevs. Consider donating!</a>

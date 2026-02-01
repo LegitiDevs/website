@@ -19,7 +19,7 @@
         <a href="/browse">World Browser -&gt;</a>
         <a href="/api">Usage & Docs -&gt;</a>
         <a href="https://legitimoose.wiki">Legitimoose Wiki -&gt;</a>
-        <a href="https://donate.legiti.dev">Donate -&gt;</a>
+        <a href="https://legiti.dev/donate">Donate -&gt;</a>
     </div>
 </div>
 

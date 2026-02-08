@@ -136,7 +136,7 @@
                         <WorldCard
                             world_uuid={world.world_uuid} 
                             icon={world.icon} 
-                            raw_name={world.raw_name}
+                            raw_name={JSON.stringify(world.raw_name)}
                             owner_uuid={world.owner_uuid}
                             votes={world.votes}
                             visits={world.visits}
@@ -153,7 +153,7 @@
                         <WorldCard
                             world_uuid={world.world_uuid} 
                             icon={world.icon} 
-                            raw_name={world.raw_name}
+                            raw_name={JSON.stringify(world.raw_name)}
                             owner_uuid={world.owner_uuid}
                             votes={world.votes}
                             visits={world.visits}

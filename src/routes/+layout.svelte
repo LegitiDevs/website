@@ -77,13 +77,13 @@
 				<img src="/img/legitimoose-api-mark.png" alt="Legitimoose API Mark" />
 			</a>
 			<a href="/" onclick={() => trackPageClick('home')}>Home</a>
-			<a href="/api" onclick={() => trackPageClick('api')}>API</a>
 			<a href="/browse" onclick={() => trackPageClick('browse')}>World Browser</a>
+			<a href="/api" onclick={() => trackPageClick('api')}>API</a>
 			<a href="https://legitimoose.wiki" onclick={() => trackPageClick('wiki')}>Legitimoose Wiki</a>
-			<a href="/stats" onclick={() => trackPageClick('stats')}>Stats</a>
+			<!-- <a href="/stats" onclick={() => trackPageClick('stats')}>Stats</a> -->
 			<a href="/status" onclick={() => trackPageClick('status')}>Status</a>
+			<a href="/donate" onclick={() => trackPageClick('donate')}>Donate</a>
 			<a href="/team" onclick={() => trackPageClick('team')}>Meet The Team</a>
-			<a href="https://donate.legiti.dev" onclick={() => trackPageClick('donate')}>Donate</a>
 		</div>
 		<div class="right">
 			{#if !data.cookies.profile}

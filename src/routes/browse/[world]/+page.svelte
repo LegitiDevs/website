@@ -17,7 +17,7 @@
     // transform plaintext to json
     if (world.legitidevs?.description && world.legitidevs.description[0] != "{" && world.legitidevs.description[0] != "[") { world.legitidevs.description = JSON.stringify({ text: world.legitidevs.description }) }
 
-    const description = $derived(world.legitidevs?.description || world.raw_description)
+    const description = $derived(world.legitidevs?.description || JSON.stringify(world.raw_description))
     const unlisted = $derived(world.legitidevs?.unlisted || false)
     const comments = $derived.by(() => {
         if (!world.legitidevs?.comments) return []
@@ -30,7 +30,7 @@
 
     let edits = $state({
         description: { 
-            content: world.legitidevs?.description || world.raw_description, 
+            content: world.legitidevs?.description || JSON.stringify(world.raw_description), 
             loading: false
         },
         unlisted: { loading: false },
@@ -135,7 +135,7 @@
                         <ItemIcon item_id={world.icon} player_uuid={world.owner_uuid} />
                     </div>
                     <div class="title-wrapper">
-                        <minecraft-text class="title">{world.raw_name}</minecraft-text>
+                        <minecraft-text class="title">{JSON.stringify(world.raw_name)}</minecraft-text>
                         {#if !edits.description.loading}
                             {#if !isEditing}
                                 <minecraft-text class="description">{description}</minecraft-text>

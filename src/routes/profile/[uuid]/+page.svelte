@@ -39,6 +39,7 @@
             resource_pack_url={world.resource_pack_url}
             locked={world.locked}
             player_count={world.player_count}
+            max_players={world.max_players}
             enforce_whitelist={world.enforce_whitelist}
             version={world.version}
         />

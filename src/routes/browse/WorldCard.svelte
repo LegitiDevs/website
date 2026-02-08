@@ -3,7 +3,7 @@
 	import { getItemIcon, getOwnerName } from "$lib/utils.js";
 	import ItemIcon from "./ItemIcon.svelte";
 
-    let { world_uuid, icon, raw_name, owner_uuid, votes, visits, resource_pack_url, locked, player_count, enforce_whitelist, version } = $props();
+    let { world_uuid, icon, raw_name, owner_uuid, votes, visits, resource_pack_url, locked, player_count, max_players, enforce_whitelist, version } = $props();
     const isScreenSmall = window.innerWidth <= 680;
 </script>
 
@@ -29,9 +29,9 @@
             {#if !locked}
                 <p class="info hidden">Offline</p>
 	    {:else if player_count == 1}
-                <p class="info on">{player_count} player online</p>
+                <p class="info on">{player_count}/{max_players} player online</p>
             {:else}
-                <p class="info on">{player_count} players online</p>
+                <p class="info on">{player_count}/{max_players} players online</p>
             {/if}
             {#if enforce_whitelist}
                 <p class="info warning">Whitelisted!</p>

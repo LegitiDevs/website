@@ -159,9 +159,9 @@
                     {#if !world.locked}
                         <p class="info hidden">Offline</p>
                     {:else if world.player_count == 1}
-                        <p class="info on">{world.player_count} player online</p>
+                        <p class="info on">{world.player_count}/{world.max_players} player online</p>
                     {:else}
-                        <p class="info on">{world.player_count} players online</p>
+                        <p class="info on">{world.player_count}/{world.max_players} players online</p>
                     {/if}
                     {#if world.enforce_whitelist}
                         <p class="info warning">Whitelisted!</p>

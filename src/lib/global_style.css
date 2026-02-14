@@ -87,10 +87,8 @@ h1 {
         content: "";
         position: absolute;
         top: 120%;
-        background-color: light-dark(
-            var(--secondary-dark),
-            var(--secondary-light)
-        );
+        background-color: light-dark(var(--secondary-dark),
+                var(--secondary-light));
         height: 5px;
         width: clamp(100%, 120%, 90vw);
     }
@@ -102,16 +100,16 @@ h2 {
     margin-top: 5px;
     margin-bottom: 5px;
 
-    > a,
-    > a:visited,
-    > a:active {
+    >a,
+    >a:visited,
+    >a:active {
         display: flex;
         position: relative;
         text-decoration: none;
         color: light-dark(var(--secondary-dark), var(--secondary-light));
     }
 
-    > a::before {
+    >a::before {
         content: "#";
         position: absolute;
         opacity: 0.2;
@@ -131,12 +129,10 @@ ol {
 }
 
 div.line {
-    background-image: linear-gradient(
-        to right,
-        rgb(0, 0, 0, 0.1),
-        rgb(0, 0, 0, 0.5),
-        rgb(0, 0, 0, 0.1)
-    );
+    background-image: linear-gradient(to right,
+            rgb(0, 0, 0, 0.1),
+            rgb(0, 0, 0, 0.5),
+            rgb(0, 0, 0, 0.1));
     margin-block: 20px;
     height: 2px;
     width: 100%;
@@ -165,14 +161,43 @@ code {
     }
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: black;
+    color: #ffffff;
+    text-align: center;
+    white-space: normal;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--tertiary-dark);
     border-radius: 100vmax;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--main-light);
     border-radius: 100vmax;

@@ -10,6 +10,8 @@
     let worlds = $state([])
     let searchedWorlds = $state([])
 
+    let players = $state([])
+
     // Variables for searching
     let searchQuery = $state('');
     let isSearching = $state(false)
@@ -37,6 +39,15 @@
         worlds = [...worlds, ...newWorlds]
         pageIndex++
         isLoading = false
+    }
+
+    async function fetchPlayers() {
+        const res = await fetch(`${PUBLIC_API_ROOT}players`)
+        const data = await res.json()
+
+        players = Object.fromEntries(
+            data.map(entry => [entry.world, entry.players])
+        )
     }
     
     async function fetchSearchedWorlds(query) {
@@ -70,7 +81,10 @@
         }, 600);
     }
 
-    onMount(async () => { await fetchPage(pageIndex) });
+    onMount(async () => { 
+        await fetchPage(pageIndex)
+        await fetchPlayers()
+    });
 
     onMount(() => {
         observer = new IntersectionObserver(async (entries) => {
@@ -132,7 +146,7 @@
             </div>
             <div class="world-container">
                 {#if !isSearching}
-                    {#each worlds as world}
+                    {#each worlds as world, index}
                         <WorldCard
                             world_uuid={world.world_uuid} 
                             icon={world.icon} 
@@ -146,10 +160,11 @@
                             max_players={world.max_players}
                             enforce_whitelist={world.enforce_whitelist}
                             version={world.version}
+                            players={players[world.world_uuid] ?? []}
                         />
                     {/each}
                 {:else}
-                    {#each searchedWorlds as world}
+                    {#each searchedWorlds as world, index}
                         <WorldCard
                             world_uuid={world.world_uuid} 
                             icon={world.icon} 
@@ -163,6 +178,7 @@
                             max_players={world.max_players}
                             enforce_whitelist={world.enforce_whitelist}
                             version={world.version}
+                            players={players[world.world_uuid] ?? []}
                         />
                     {/each}
                 {/if}

@@ -9,6 +9,7 @@
 
     let { data } = $props();
     let world = $state({...data.world})
+    let players = $state({...data.players})
     world.legitidevs ??= {}
 
     const worldCommand = `/world ${world.world_uuid}`
@@ -159,9 +160,15 @@
                     {#if !world.locked}
                         <p class="info hidden">Offline</p>
                     {:else if world.player_count == 1}
-                        <p class="info on">{world.player_count}/{world.max_players} player online</p>
+                        <div class="tooltip">
+                            <p class="info on">{world.player_count}/{world.max_players} player online</p>
+                            <span class="tooltiptext">{players?.players?.join(', ')}</span>
+                        </div>
                     {:else}
-                        <p class="info on">{world.player_count}/{world.max_players} players online</p>
+                        <div class="tooltip">
+                            <p class="info on">{world.player_count}/{world.max_players} players online</p>
+                            <span class="tooltiptext">{players?.players?.join(', ')}</span>
+                        </div>
                     {/if}
                     {#if world.enforce_whitelist}
                         <p class="info warning">Whitelisted!</p>

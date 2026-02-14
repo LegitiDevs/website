@@ -3,11 +3,11 @@
 	import { getItemIcon, getOwnerName } from "$lib/utils.js";
 	import ItemIcon from "./ItemIcon.svelte";
 
-    let { world_uuid, icon, raw_name, owner_uuid, votes, visits, resource_pack_url, locked, player_count, max_players, enforce_whitelist, version } = $props();
+    let { world_uuid, icon, raw_name, owner_uuid, votes, visits, resource_pack_url, locked, player_count, max_players, enforce_whitelist, version, players } = $props();
     const isScreenSmall = window.innerWidth <= 680;
 </script>
 
-<a class="world-card" href="/browse/{world_uuid}">
+<a class="world-card" href="/browse/{world_uuid}" data-sveltekit-preload-data="off">
     <div class="top">
         <div class="title-container">
             <div class="icon-wrapper">
@@ -29,9 +29,15 @@
             {#if !locked}
                 <p class="info hidden">Offline</p>
 	    {:else if player_count == 1}
+            <div class="tooltip">
                 <p class="info on">{player_count}/{max_players} player online</p>
+                <span class="tooltiptext">{players?.join(', ')}</span>
+            </div>
             {:else}
+            <div class="tooltip">
                 <p class="info on">{player_count}/{max_players} players online</p>
+                <span class="tooltiptext">{players?.join(', ')}</span>
+            </div>
             {/if}
             {#if enforce_whitelist}
                 <p class="info warning">Whitelisted!</p>

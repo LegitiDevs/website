@@ -4,13 +4,16 @@ import { error } from '@sveltejs/kit'
 
 export const load = async ({ params, fetch }) => {
     const worldDataRes = await fetch(`${PUBLIC_API_ROOT}world/${params.world} `)
+    const playersRes = await fetch(`${PUBLIC_API_ROOT}players/${params.world}`)
     if (!worldDataRes.ok) error(404, { message: `Invalid world UUID.` })
     const worldData = await worldDataRes.json();
+    const playersData = await playersRes.json();
 
     return {
         page: {
             title: worldData.name,
         },
-        world: worldData
+        world: worldData,
+        players: playersData
     }
 }

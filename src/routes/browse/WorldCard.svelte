@@ -68,14 +68,12 @@
         transition: all 0.1s ease;
         cursor: pointer;
         gap: 20px;
+        width: 35vw;
+        margin-bottom: 1vw;
 
         &:hover {
             scale: 1.02;
             outline: light-dark(rgb(0, 0, 0, 0.5), rgb(255, 255, 255, 0.5)) 2px solid;
-        }
-
-        @media screen and (max-width: 680px) {
-            max-width: 100vw;
         }
     }
 

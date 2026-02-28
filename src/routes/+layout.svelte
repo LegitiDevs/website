@@ -81,7 +81,7 @@
 			<a href="/api" onclick={() => trackPageClick('api')}>API</a>
 			<a href="https://legitimoose.wiki" onclick={() => trackPageClick('wiki')}>Legitimoose Wiki</a>
 			<!-- <a href="/stats" onclick={() => trackPageClick('stats')}>Stats</a> -->
-			<a href="/status" onclick={() => trackPageClick('status')}>Status</a>
+			<a href="https://status.legiti.dev/" onclick={() => trackPageClick('status')}>Status</a>
 			<a href="/donate" onclick={() => trackPageClick('donate')}>Donate</a>
 			<a href="/team" onclick={() => trackPageClick('team')}>Meet The Team</a>
 		</div>

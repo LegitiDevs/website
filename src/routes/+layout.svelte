@@ -128,7 +128,7 @@
 		<a href="https://github.com/LegitiDevs/">
 			<img src="/svg/github-mark-white.svg" alt="Github Logo" />
 		</a>
-		<a href="https://discord.gg/FQUmnbgV5S">
+		<a href="https://discord.gg/gnk7ZtBSjZ">
 			<img src="/svg/discord-mark-white.svg" alt="Discord Logo" />
 		</a>
 		<a href="https://store.legitimoose.com">store.legitimoose.com</a>

@@ -1,3 +1,7 @@
+<svelte:head>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+</svelte:head> 
+
 <div class="main-container">
   <div class="title-container">
     <h1>Donate</h1>
@@ -15,9 +19,11 @@
       </div>
     </div>
     <div class="right">
-      <a href="https://donate.stripe.com/cNi6oI60xgQScmdaf60Ny00" target="_blank" class="donate-button">
-        Donate here!
-      </a>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1SAw0pLRpHOhXNRWdM0q4Fvu"
+        publishable-key="pk_live_51RGrIELRpHOhXNRWOMvF04pYYklQD1obIUTyjB3wrwz1ug1MpTPD6zK8ZhClXTcVb1RXj6N0Ygqd5g955Cem25jz00ua8bNTSA"
+      >
+      </stripe-buy-button>
     </div>
   </div>
 </div>
@@ -52,40 +58,14 @@
       display: flex;
       flex-direction: column;
       align-items: center; 
-      width: 70%
+      width: 100%
     }
 
     .right {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      margin-left: 10%;
       width: 30%;
-    }
-  }
-
-  .donate-button {
-    position: fixed;
-    background-color: transparent;
-    outline: 5px solid white;
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    padding-inline: 20px;
-    padding-top: 5px;
-    font-size: 3em;
-    font-family: 'MinecraftDefault';
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all 0.2s ease;
-
-    &:hover {
-      scale: 1.1;
-      background-color: white;
-      outline: 5px solid var(--accent);
-      color: var(--accent);
-      backdrop-filter: none;
     }
   }
 

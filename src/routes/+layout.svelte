@@ -2,7 +2,6 @@
     import { page } from "$app/stores";
     import { afterNavigate, beforeNavigate } from "$app/navigation";
     import { browser } from "$app/environment";
-    import posthog from "posthog-js";
     import { lastPageURL, currentPageURL, alerts } from "$lib/stores.js";
     import { onMount } from "svelte";
     import SITE_CONFIG from "$lib/config.json";
@@ -22,28 +21,6 @@
     afterNavigate((nav) => {
         lastPageURL.set($currentPageURL); // Store the previous page
         currentPageURL.set(nav.to?.url || window.location.href); // Update current page
-    });
-
-    if (browser) {
-        beforeNavigate(() => posthog.capture("$pageleave"));
-        afterNavigate(() => posthog.capture("$pageview"));
-    }
-
-    function trackPageClick(pageName) {
-        posthog.capture("page click", {
-            page: pageName,
-        });
-    }
-
-    function trackHomePageEvent() {
-        posthog.capture("home page event", {
-            page: "home",
-            timestamp: new Date().toISOString(),
-        });
-    }
-
-    onMount(() => {
-        trackHomePageEvent();
     });
 </script>
 
@@ -110,23 +87,18 @@
                     alt="Legitimoose API Mark"
                 />
             </a>
-            <a href="/" onclick={() => trackPageClick("home")}>Home</a>
-            <a href="/browse" onclick={() => trackPageClick("browse")}
+            <a href="/">Home</a>
+            <a href="/browse"
                 >World Browser</a
             >
-            <a href="/api" onclick={() => trackPageClick("api")}>API</a>
+            <a href="/api">API</a>
+            <a href="https://legitimoose.wiki">Legitimoose Wiki</a>
             <a
-                href="https://legitimoose.wiki"
-                onclick={() => trackPageClick("wiki")}>Legitimoose Wiki</a
+                href="https://status.legiti.dev/">Status</a
             >
-            <!-- <a href="/stats" onclick={() => trackPageClick('stats')}>Stats</a> -->
-            <a
-                href="https://status.legiti.dev/"
-                onclick={() => trackPageClick("status")}>Status</a
+            <a href="/donate">Donate</a
             >
-            <a href="/donate" onclick={() => trackPageClick("donate")}>Donate</a
-            >
-            <a href="/team" onclick={() => trackPageClick("team")}
+            <a href="/team"
                 >Meet The Team</a
             >
         </div>

@@ -7,9 +7,6 @@ const config = {
 	kit: {
 		// adapter-node supports Node.js environments; swap if you need a different runtime.
 		adapter: adapter(),
-		paths: {
-			relative: false // Required for PostHog session replay to work correctly
-		}
 	}
 };
 

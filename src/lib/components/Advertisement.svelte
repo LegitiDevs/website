@@ -1,6 +1,5 @@
 <script>
 	import { fade } from "svelte/transition";
-	import posthog from 'posthog-js';
 
     let loadedStatus = $state(null);
     let loaded = $derived(loadedStatus === "filled");
@@ -22,12 +21,6 @@
           }
         };
     }
-
-	function trackAdClick(adName) {
-		posthog.capture('ad click', {
-			ad: adName
-		});
-	}
 </script>
 
 <div class="ad">
@@ -51,7 +44,7 @@
         </div>
     {/if}
     <div class="advertisement">
-		<button onclick={() => trackAdClick('example_ad')}>Click Ad</button>
+		<button>Click Ad</button>
 	</div>
 </div>
 

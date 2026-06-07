@@ -71,7 +71,7 @@
         <div class="left">
             <a href="/" data-sveltekit-reload={isError}>
                 <img
-                    src="/img/legitimoose-api-mark.png"
+                    src="/img/legitimoose-api-mark.webp"
                     alt="Legitimoose API Mark"
                 />
             </a>
@@ -83,7 +83,7 @@
         <div class="left">
             <a href="/">
                 <img
-                    src="/img/legitimoose-api-mark.png"
+                    src="/img/legitimoose-api-mark.webp"
                     alt="Legitimoose API Mark"
                 />
             </a>

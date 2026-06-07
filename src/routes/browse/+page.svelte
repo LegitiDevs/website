@@ -109,7 +109,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="World Browser"/>
     <meta property="og:description" content="Browse worlds from the legitimoose server here!"/>
-    <meta property="og:image" content="/img/legitimoose-api-mark.png">
+    <meta property="og:image" content="/img/legitimoose-api-mark.webp">
 </svelte:head>
 
 <div class="main-container">

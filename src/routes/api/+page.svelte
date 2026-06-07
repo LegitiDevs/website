@@ -30,7 +30,7 @@
 		property="og:description"
 		content="Find out how to use the LegitimooseAPI here."
 	/>
-	<meta property="og:image" content="/img/legitimoose-api-mark.png" />
+	<meta property="og:image" content="/img/legitimoose-api-mark.webp" />
 </svelte:head>
 
 <div class="main-container">

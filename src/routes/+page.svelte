@@ -2,7 +2,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="LegitiDevs"/>
     <meta property="og:description" content="The legitimoose community website made by the LegitiDevs!"/>
-    <meta property="og:image" content="/img/legitimoose-api-mark.png">
+    <meta property="og:image" content="/img/legitimoose-api-mark.webp">
 </svelte:head>
 
 <div class="main-container">
@@ -10,6 +10,7 @@
         <img
             src="/img/legitimoose-api-logo.png"
             alt="Legitimoose API Logo"
+            fetchpriority=high
         />
         <p>
             The unofficial API made by the community to get world data from the hit Minecraft server 'legitimoose.com'!

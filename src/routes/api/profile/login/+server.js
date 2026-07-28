@@ -2,7 +2,7 @@ import SITE_CONFIG from "$lib/config.json" with { type: "json" };
 import { redirect } from "@sveltejs/kit";
 import { showAlert } from "$lib/utils.js";
 import { PUBLIC_SITE_ROOT, PUBLIC_MCAUTH_CLIENT_ID, PUBLIC_API_ROOT } from "$env/static/public";
-import { MCAUTH_CLIENT_SECRET } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 const REDIRECT_URI = `${PUBLIC_SITE_ROOT}api/profile/login`
 const AUTH_REQ_URL =
 	`https://mc-auth.com/oAuth2/authorize` +
@@ -10,6 +10,8 @@ const AUTH_REQ_URL =
 	`&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
 	`&scope=profile` +
 	`&response_type=code`;
+
+const MCAUTH_CLIENT_SECRET = env.MCAUTH_CLIENT_SECRET;
 
 export const GET = async ({ url, cookies }) => {
 
@@ -34,7 +36,7 @@ export const GET = async ({ url, cookies }) => {
 
     // Client hasnt logged in yet
     if (!SEARCH_PARAMS.get("code")) return redirect(302, AUTH_REQ_URL);
-    
+
     // Client has redirected. We got the code.
     const mcAuthPostRequestBody = {
         client_id: PUBLIC_MCAUTH_CLIENT_ID,
@@ -61,15 +63,15 @@ export const GET = async ({ url, cookies }) => {
         method: "POST",
         body: JSON.stringify({ access_token: mcAuthResponse.access_token })
     });
-    
+
     // make the user confused on why they didnt log in cuz why not
     if (!tokenResponse.ok) return redirect(302, `/`)
-    
+
     const { sessionToken, refreshToken, profile_uuid, refreshTokenExpiresAt } = await tokenResponse.json()
 
     cookies.set("authorization.sessionToken", sessionToken, { path: "/" })
     cookies.set("authorization.refreshToken", refreshToken, { path: "/", expires: new Date(refreshTokenExpiresAt * 1000) })
     cookies.set("profile.uuid", profile_uuid, { path: "/", expires: new Date(refreshTokenExpiresAt * 1000) })
-    
+
     return redirect(302, `/profile/${profile_uuid}`);
 }

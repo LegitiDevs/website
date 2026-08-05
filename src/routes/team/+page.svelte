@@ -26,9 +26,9 @@
     {
       pfp: '/img/pfps/hazel.png',
       name: 'Hazel',
-      discord: '@xendyex',
-      pronouns: '(she/her)',
-      quote: "hazel."
+      discord: '@hablethedev',
+      pronouns: '(it/she)',
+      quote: "i do a thing or other! https://hazel.legiti.dev"
     },
     {
       pfp: '/img/pfps/anjo.jpg',

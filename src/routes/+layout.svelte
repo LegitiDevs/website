@@ -146,7 +146,7 @@
     <p>Not affiliated with Mojang AB or Partners</p>
 
     <p>
-        <a href="https://store.skyenet.co.in">API Hosted by SkyeNetwork</a>
+        <a href="https://store.skyemc.net">API Hosted by SkyeNetwork</a>
         <span>|</span>
         <a href="https://store.legitimoose.com">store.legitimoose.com</a>
         <span>|</span>

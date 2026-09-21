@@ -17,12 +17,6 @@ To get started with the project, follow these steps:
 
 2. Run the following commands:
 
-`npm install`
+`pnpm install`
 
-`npm run dev`
-
----
-
-## How to Contribute
-
-Please refer to [CONTRIBUTING.md](https://github.com/LegitiDevs/website/blob/master/CONTRIBUTING.md)
+`pnpm run dev`

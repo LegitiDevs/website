@@ -5,7 +5,6 @@
     import { lastPageURL, currentPageURL, alerts } from "$lib/stores.js";
     import { onMount } from "svelte";
     import SITE_CONFIG from "$lib/config.json";
-    import Dropdown from "$lib/components/Dropdown.svelte";
     import "$lib/global_style.css";
     import { rehyphenateUUID } from "$lib/utils.js";
     import { fly } from "svelte/transition";
@@ -30,40 +29,6 @@
     {:else}
         <title>{$page.data?.page?.title ?? "Unknown"} | LegitiDevs</title>
     {/if}
-    <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2384425323311779"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        async
-        src="https://fundingchoicesmessages.google.com/i/pub-2384425323311779?ers=1"
-    ></script>
-    <script
-        async
-        custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
-    >
-    </script>
-    <script>
-        (function () {
-            function signalGooglefcPresent() {
-                if (!window.frames["googlefcPresent"]) {
-                    if (document.body) {
-                        const iframe = document.createElement("iframe");
-                        iframe.style =
-                            "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;";
-                        iframe.style.display = "none";
-                        iframe.name = "googlefcPresent";
-                        document.body.appendChild(iframe);
-                    } else {
-                        setTimeout(signalGooglefcPresent, 0);
-                    }
-                }
-            }
-            signalGooglefcPresent();
-        })();
-    </script>
 </svelte:head>
 
 {#if isError || $page.data?.page?.navbar === "small"}
@@ -102,28 +67,6 @@
                 >Meet The Team</a
             >
         </div>
-        <div class="right">
-            {#if !data.cookies.profile}
-                <a href="/api/profile/login">Log in</a>
-            {:else}
-                <div class="profile-dropdown">
-                    <Dropdown
-                        img={`https://mc-heads.net/head/${data.cookies.profile.uuid}/left`}
-                        options={[
-                            {
-                                label: "My Profile",
-                                link: `/profile/${data.cookies.profile.uuid}`,
-                            },
-                            {
-                                label: "Log out",
-                                reload: true,
-                                link: `/api/profile/logout`,
-                            },
-                        ]}
-                    />
-                </div>
-            {/if}
-        </div>
     </div>
 {/if}
 
@@ -131,14 +74,6 @@
 </amp-auto-ads>
 
 {@render children()}
-
-<div class="alerts-container">
-    {#each $alerts as alert}
-        <p class={["alert", alert.level]} transition:fly={{ y: -10 }}>
-            {alert.message}
-        </p>
-    {/each}
-</div>
 
 <div class="footer-container">
     <p>This is not an official Moose project and is made by the community.</p>
@@ -196,17 +131,6 @@
             margin-left: 20px;
         }
 
-        .right {
-            display: flex;
-            flex-grow: 1;
-            margin-right: 20px;
-            justify-content: end;
-
-            .profile-dropdown {
-                max-width: 50px;
-            }
-        }
-
         a,
         a:visited,
         a:active {
@@ -259,44 +183,6 @@
             height: auto;
             width: 50px;
             border-radius: 5px;
-        }
-    }
-
-    .alerts-container {
-        position: fixed;
-        top: 10vh;
-        left: 50%;
-        translate: -50%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        > p {
-            padding-block: 5px;
-            padding-inline: 10px;
-            border-radius: 10px;
-            color: var(--text-main-light);
-            margin: 0;
-
-            &.info {
-                background-color: #61a8f8;
-                box-shadow: 0px 3px #4056e2;
-            }
-
-            &.success {
-                background-color: #70ff44;
-                box-shadow: 0px 3px #1eaf2f;
-            }
-
-            &.error {
-                background-color: #ff4444;
-                box-shadow: 0px 3px #bb2222;
-            }
-
-            &.warning {
-                background-color: #fdce34;
-                box-shadow: 0px 3px #f2882a;
-            }
         }
     }
 

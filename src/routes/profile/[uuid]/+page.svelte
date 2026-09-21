@@ -6,23 +6,12 @@
 	import WorldCard from '../../browse/WorldCard.svelte';
 
     const { data } = $props();
-    const canEditProfile = data.cookies?.profile ? data.profileOwnerUUID === data.cookies.profile.uuid : false
-
     let worlds = $state([])
 
     onMount(async () => {
-        const res = await fetch(`${PUBLIC_API_ROOT}owner/${data.profileOwnerUUID}`, {
-            method: 'POST',
-            headers: {
-                "Session-Token": data.cookies?.authorization?.sessionToken ?? ""
-            },
-        })
+        const res = await fetch(`${PUBLIC_API_ROOT}owner/${data.profileOwnerUUID}`)
         worlds = await res.json()
     })
-
-    async function test() {
-        showAlert("what the sigma", "info", 10000)
-    }
 </script>
 
 <div class="main-container">

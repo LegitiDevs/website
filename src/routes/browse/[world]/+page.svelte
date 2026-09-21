@@ -1,10 +1,12 @@
 <script>
 	import Advertisement from "$lib/components/Advertisement.svelte";
 	import SITE_CONFIG from "$lib/config.json";
-    import { PUBLIC_API_ROOT } from '$env/static/public'
+    import { env } from '$env/dynamic/public'
 	import { lastPageURL } from "$lib/stores";
 	import { getItemIcon, getOwnerName, rehyphenateUUID, sanitizeText } from "$lib/utils.js";
 	import ItemIcon from "../ItemIcon.svelte";
+
+    const apiRoot = env.PUBLIC_API_ROOT || 'https://api.legiti.dev'
 
     let { data } = $props();
     let world = $state({...data.world})

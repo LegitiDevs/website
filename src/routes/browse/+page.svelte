@@ -3,8 +3,10 @@
 	import WorldCard from './WorldCard.svelte';
 	import SITE_CONFIG from "$lib/config.json";
 	import Advertisement from '$lib/components/Advertisement.svelte';
-    import { PUBLIC_API_ROOT } from '$env/static/public'
+    import { env } from '$env/dynamic/public'
 	import { get, writable } from 'svelte/store';
+
+    const apiRoot = env.PUBLIC_API_ROOT || 'https://api.legiti.dev/'
 
     // These stores all the worlds we fetched
     let worlds = $state([])
@@ -34,7 +36,7 @@
 
     async function fetchPage() {
         isLoading = true
-        const res = await fetch(`${PUBLIC_API_ROOT}page/${pageIndex}?sort=${sort}&sortDirection=${sortDirection}`)
+        const res = await fetch(`${apiRoot}page/${pageIndex}?sort=${sort}&sortDirection=${sortDirection}`)
         const newWorlds = await res.json()
         worlds = [...worlds, ...newWorlds]
         pageIndex++
@@ -42,7 +44,7 @@
     }
 
     async function fetchPlayers() {
-        const res = await fetch(`${PUBLIC_API_ROOT}players`)
+        const res = await fetch(`${apiRoot}players`)
         const data = await res.json()
 
         players = Object.fromEntries(
@@ -60,7 +62,7 @@
         isLoading = true
         isSearching = true
         const sanitizedQuery = encodeURIComponent(query)
-        const res = await fetch(`${PUBLIC_API_ROOT}search/${sanitizedQuery}`)
+        const res = await fetch(`${apiRoot}search/${sanitizedQuery}`)
         const worldsMatched = await res.json()
         searchedWorlds = worldsMatched;
         isLoading = false

@@ -56,7 +56,7 @@
             <a href="/browse"
                 >World Browser</a
             >
-            <a href="/api">API</a>
+            <a href="https://docs.legiti.dev">API</a>
             <a href="https://legitimoose.wiki">Legitimoose Wiki</a>
             <a
                 href="https://status.legiti.dev/">Status</a

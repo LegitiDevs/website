@@ -18,7 +18,7 @@
     </div>
     <div class="button-container">
         <a href="/browse">World Browser -&gt;</a>
-        <a href="/api">Usage & Docs -&gt;</a>
+        <a href="https://docs.legiti.dev">Usage & Docs -&gt;</a>
         <a href="https://legitimoose.wiki">Legitimoose Wiki -&gt;</a>
         <a href="https://legiti.dev/donate">Donate -&gt;</a>
     </div>

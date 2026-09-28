@@ -23,28 +23,30 @@
     let sortDirection = $state('ascending')
     
     // Variables for loading more pages
-    let pageIndex = $state(0)
+    let offset = $state(0)
+    const limit = 20;
     let isLoading = $state(false)
     let observer
     let sentinel = $state();
 
     async function refreshWorlds() {
         worlds = []
-        pageIndex = 0
+        offset = 0
         await fetchPage()
     }
 
     async function fetchPage() {
         isLoading = true
-        const res = await fetch(`${apiRoot}page/${pageIndex}?sort=${sort}&sortDirection=${sortDirection}`)
+        const sortDirectionSymbol = sortDirection == "ascending" ? "+" : "-"
+        const res = await fetch(`${apiRoot}v4/worlds/?offset=${offset}&limit=20&sort_by=${encodeURIComponent(sortDirectionSymbol)}${sort}`)
         const newWorlds = await res.json()
         worlds = [...worlds, ...newWorlds]
-        pageIndex++
+        offset += limit
         isLoading = false
     }
 
     async function fetchPlayers() {
-        const res = await fetch(`${apiRoot}players`)
+        const res = await fetch(`${apiRoot}v4/worlds/players`)
         const data = await res.json()
 
         players = Object.fromEntries(
@@ -62,7 +64,7 @@
         isLoading = true
         isSearching = true
         const sanitizedQuery = encodeURIComponent(query)
-        const res = await fetch(`${apiRoot}search/${sanitizedQuery}`)
+        const res = await fetch(`${apiRoot}v4/worlds/search?query=${sanitizedQuery}`)
         const worldsMatched = await res.json()
         searchedWorlds = worldsMatched;
         isLoading = false
@@ -84,14 +86,14 @@
     }
 
     onMount(async () => { 
-        await fetchPage(pageIndex)
+        await fetchPage(offset)
         await fetchPlayers()
     });
 
     onMount(() => {
         observer = new IntersectionObserver(async (entries) => {
             if (entries[0].isIntersecting && !isLoading) {
-                await fetchPage(pageIndex)
+                await fetchPage(offset)
             }
         }, {
             root: null,

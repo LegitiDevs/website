@@ -2,16 +2,16 @@
 	import SITE_CONFIG from "$lib/config.json";
     import { env } from '$env/dynamic/public'
 	import { onMount } from 'svelte';
-	import { rehyphenateUUID, showAlert } from '$lib/utils';
+	import { rehyphenateUUID } from '$lib/utils';
 	import WorldCard from '../../browse/WorldCard.svelte';
 
-    const apiRoot = env.PUBLIC_API_ROOT || 'https://api.legiti.dev'
+    const apiRoot = env.PUBLIC_API_ROOT || 'https://api.legiti.dev/'
 
     const { data } = $props();
     let worlds = $state([])
 
     onMount(async () => {
-        const res = await fetch(`${apiRoot}owner/${data.profileOwnerUUID}`)
+        const res = await fetch(`${apiRoot}v4/players/${data.profileOwnerUUID}/worlds`)
         worlds = await res.json()
     })
 </script>

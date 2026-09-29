@@ -76,7 +76,7 @@
 {@render children()}
 
 <div class="footer-container">
-    <p>This is not an official Moose project and is made by the community.</p>
+    <p>This is not an official Legitimoose project and is made by the community.</p>
     <p>We have no affiliation with any real-world brands.</p>
     <p>Not affiliated with Mojang AB or Partners</p>
 
@@ -85,7 +85,7 @@
         <span>|</span>
         <a href="https://store.legitimoose.com">store.legitimoose.com</a>
         <span>|</span>
-        <a href="/donate">Support Legitimoose!</a>
+        <a href="/donate">Support LegitiDevs!</a>
         <span>|</span>
         <a href="/privacy">Privacy Policy</a>
     </p>
